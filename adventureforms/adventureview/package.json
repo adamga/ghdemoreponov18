@@ -1,0 +1,21 @@
+{
+  "name": "adventureview",
+  "version": "1.0.0",
+  "description": "Web front end viewer for AdventureWorks2014 database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "bootstrap": "^5.3.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
