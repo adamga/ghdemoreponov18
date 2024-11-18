@@ -1,0 +1,26 @@
+@page "/dynamic-textbox"
+@using System.Net.Http
+@using System.Net.Http.Json
+
+<PageTitle>Dynamic Textbox</PageTitle>
+
+<h3>Dynamic Textbox</h3>
+
+<button @onclick="FetchData">Fetch Data</button>
+
+@if (!string.IsNullOrEmpty(apiData))
+{
+    <textarea style="width: 100%; height: 200px;">@apiData</textarea>
+}
+
+@code {
+    private string apiData;
+
+    private async Task FetchData()
+    {
+        using (var httpClient = new HttpClient())
+        {
+            apiData = await httpClient.GetStringAsync("https://api.example.com/data");
+        }
+    }
+}

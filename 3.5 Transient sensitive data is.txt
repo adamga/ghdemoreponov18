@@ -1,0 +1,51 @@
+3.5 Transient sensitive data is 
+securely deleted from temporary 
+storage facilities automatically by 
+the software once the purpose for 
+which it is retained is satisfied.
+3.5.a The assessor shall examine evidence to identify the 
+methods implemented to render transient sensitive data 
+irretrievable and to confirm that sensitive data is unrecoverable 
+after the process is complete. 
+Note: This includes data which may be stored only temporarily 
+in program memory / variables during operation of the software.
+Where sensitive data is only retained temporarily to 
+perform a specific function (such as a payment 
+transaction), mechanisms are required to securely 
+delete the sensitive data once the specific function 
+has completed.
+Transient sensitive data is often erased from 
+temporary storage locations after processing is 
+complete. However, that data may remain resident 
+in volatile memory (RAM) or in other storage 
+locations for longer periods than anticipated (such 
+as in swap files/partitions or log files).
+Software vendors should account for all locations 
+where sensitive data is stored, regardless of the 
+intended duration of storage, and ensure that such 
+data is securely deleted once the purpose for which 
+the software collected the data has been satisfied.
+3.5.b The assessor shall examine evidence and test the 
+software to identify any platform or implementation level issues 
+that complicate the erasure of such transient sensitive 
+data such as abstraction layers between the code and the 
+hardware execution environment and to confirm that methods 
+have been implemented to minimize the risk posed by these 
+complications.
+3.5.c The assessor shall test the software to identify any 
+sensitive data residue in the execution environment and to 
+confirm that the methods implemented are implemented 
+correctly and enforced for all transient sensitive data. This 
+analysis should accommodate for the data structures and 
+methods used to store the sensitive data (for example, by 
+examining file systems at the allocation level and translating 
+data formats to identify sensitive data elements) and cover all 
+non-transient sensitive data types.
+Note: Where forensic testing of some or all aspects of the 
+platform is not possible, the assessor should examine additional 
+evidence to confirm secure deletion of sensitive data. Such 
+evidence may include (but is not necessarily limited to) memory 
+and storage dumps from development systems, evidence from 
+memory traces from emulated systems, or evidence from 
+physical extraction of data performed on-site by the software 
+vendor.
