@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch data from the server and display it in the table
-  function fetchData() {
-    fetch('/api/data')
+  function fetchData(view = '') {
+    fetch(`/api/data?view=${view}`)
       .then(response => response.json())
       .then(data => {
         const dataTable = document.getElementById('dataTable');
@@ -86,6 +86,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Function to populate the dropdown with data views
+  function populateViewsDropdown() {
+    fetch('/api/views')
+      .then(response => response.json())
+      .then(views => {
+        const viewsDropdown = document.getElementById('viewsDropdown');
+        views.forEach(view => {
+          const option = document.createElement('option');
+          option.value = view.name;
+          option.textContent = view.name;
+          viewsDropdown.appendChild(option);
+        });
+      })
+      .catch(error => console.error('Error fetching views:', error));
+  }
+
   // Event listener for form submission
   document.getElementById('addEditForm').addEventListener('submit', handleFormSubmit);
 
@@ -99,6 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Event listener for search input
   document.getElementById('searchInput').addEventListener('input', handleSearch);
 
-  // Fetch data when the page loads
+  // Event listener for views dropdown change
+  document.getElementById('viewsDropdown').addEventListener('change', function(event) {
+    const selectedView = event.target.value;
+    fetchData(selectedView);
+  });
+
+  // Fetch data views when the page loads
+  populateViewsDropdown();
   fetchData();
 });

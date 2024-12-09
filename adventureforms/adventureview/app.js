@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
+const db = require('./db'); // Assuming you have a db module to interact with the database
 
 const app = express();
 
@@ -14,6 +15,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
+// New route to fetch data based on the selected view
+app.get('/api/data', async (req, res) => {
+  const view = req.query.view || 'defaultView'; // Replace 'defaultView' with your default view name
+  try {
+    const data = await db.getData(view); // Assuming getData(view) fetches data for the specified view
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

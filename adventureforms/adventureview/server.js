@@ -1,5 +1,7 @@
+const express = require('express');
 const app = require('./app');
 const http = require('http');
+const db = require('./db'); // Assuming you have a db module to interact with the database
 
 const port = process.env.PORT || 3000;
 app.set('port', port);
@@ -29,5 +31,15 @@ server.on('error', (error) => {
       break;
     default:
       throw error;
+  }
+});
+
+// New route to fetch data views
+app.get('/api/views', async (req, res) => {
+  try {
+    const views = await db.getViews(); // Assuming getViews() fetches the list of views from the database
+    res.json(views);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch views' });
   }
 });
