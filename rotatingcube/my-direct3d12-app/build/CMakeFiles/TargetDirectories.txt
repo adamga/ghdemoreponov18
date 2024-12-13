@@ -1,0 +1,3 @@
+C:/Repos/ghdemoreponov18/rotatingcube/my-direct3d12-app/build/CMakeFiles/MyDirect3D12App.dir
+C:/Repos/ghdemoreponov18/rotatingcube/my-direct3d12-app/build/CMakeFiles/ALL_BUILD.dir
+C:/Repos/ghdemoreponov18/rotatingcube/my-direct3d12-app/build/CMakeFiles/ZERO_CHECK.dir
