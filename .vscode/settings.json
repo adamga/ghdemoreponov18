@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost\\sqlexpress",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "localdbserver",
+            "username": "sa",
+            "password": "Squire560!!",
+            "database": "AdventureWorks2014"
+        }
+    ]
+}
