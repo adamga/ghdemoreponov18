@@ -4,16 +4,21 @@
 
 using namespace DirectX;
 
-Cube::Cube(ID3D12Device* device) : m_device(device), m_vertexBuffer(nullptr), m_indexBuffer(nullptr), m_indexCount(0), m_rotation(0.0f) {
-    createBuffers();
+struct Vertex {
+    XMFLOAT3 position;
+    XMFLOAT4 color;
+};
+
+Cube::Cube(ID3D12Device* device) : vertexBuffer(nullptr), indexBuffer(nullptr), indexCount(0), rotationAngle(0.0f) {
+    createBuffers(device);
 }
 
 Cube::~Cube() {
-    if (m_vertexBuffer) m_vertexBuffer->Release();
-    if (m_indexBuffer) m_indexBuffer->Release();
+    if (vertexBuffer) vertexBuffer->Release();
+    if (indexBuffer) indexBuffer->Release();
 }
 
-void Cube::createBuffers() {
+void Cube::createBuffers(ID3D12Device* device) {
     // Define the vertices and indices for a cube
     Vertex vertices[] = {
         { XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f) },
@@ -35,17 +40,18 @@ void Cube::createBuffers() {
         3, 0, 4, 4, 7, 3
     };
 
-    m_indexCount = sizeof(indices) / sizeof(indices[0]);
+    indexCount = sizeof(indices) / sizeof(indices[0]);
 
     // Create vertex buffer
     // (Buffer creation code goes here)
+
 
     // Create index buffer
     // (Buffer creation code goes here)
 }
 
 void Cube::update(float deltaTime) {
-    m_rotation += deltaTime;
+    rotationAngle += deltaTime;
 }
 
 void Cube::draw(ID3D12GraphicsCommandList* commandList) {
@@ -53,5 +59,5 @@ void Cube::draw(ID3D12GraphicsCommandList* commandList) {
     // (Binding code goes here)
 
     // Draw the cube
-    commandList->DrawIndexedInstanced(m_indexCount, 1, 0, 0, 0);
+    commandList->DrawIndexedInstanced(indexCount, 1, 0, 0, 0);
 }

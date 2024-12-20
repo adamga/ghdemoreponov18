@@ -1,6 +1,9 @@
+#include <wrl/client.h>
+#include <d3d12.h>
+
 class Cube {
 public:
-    Cube();
+    Cube(ID3D12Device* device); // Add this constructor declaration
     ~Cube();
 
     void createBuffers(ID3D12Device* device);

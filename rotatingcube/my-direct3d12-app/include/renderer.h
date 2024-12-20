@@ -1,9 +1,16 @@
+#include <d3d12.h>
+#include <dxgi1_4.h>
+#include <wrl.h>
+#include <windows.h>
+
+
+
 class Renderer {
 public:
     Renderer();
     ~Renderer();
 
-    void initialize(HWND hwnd);
+    bool initialize(HWND hwnd); // Change return type to bool
     void render();
     void cleanup();
 
@@ -19,7 +26,7 @@ private:
     // Direct3D 12 resources
     ID3D12Device* device;
     ID3D12CommandQueue* commandQueue;
-    ID3D12SwapChain* swapChain;
+    IDXGISwapChain3* swapChain;
     ID3D12DescriptorHeap* rtvHeap;
     ID3D12Resource* renderTargets[2];
     ID3D12PipelineState* pipelineState;

@@ -1,64 +1,141 @@
 #include "renderer.h"
-#include "cube.h"
-#include <d3d12.h>
-#include <dxgi1_6.h>
-#include <windows.h>
 #include <stdexcept>
+#include <d3dx12.h> // Include the necessary header for CD3DX12 classes
 
-Renderer::Renderer() : m_device(nullptr), m_commandQueue(nullptr), m_swapChain(nullptr), m_renderTargetViewHeap(nullptr), m_fence(nullptr), m_fenceValue(0) {}
+Renderer::Renderer() {
+    // Constructor implementation
 
-void Renderer::initialize(HWND hwnd) {
-    // Initialize Direct3D 12
-    UINT dxgiFactoryFlags = 0;
-    ComPtr<IDXGIFactory7> factory;
-    CreateDXGIFactory2(dxgiFactoryFlags, IID_PPV_ARGS(&factory));
+    device = nullptr;
+    commandQueue = nullptr;
 
-    // Create device
-    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&m_device));
+    swapChain = nullptr;
+    rtvHeap = nullptr;
+    pipelineState = nullptr;
+    commandList = nullptr;
+    fence = nullptr;
+    fenceEvent = nullptr;
+    fenceValue = 0;
 
-    // Create command queue
-    D3D12_COMMAND_QUEUE_DESC queueDesc = {};
-    queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-    queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
-    m_device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&m_commandQueue));
-
-    // Create swap chain
-    DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
-    swapChainDesc.BufferCount = 2;
-    swapChainDesc.Width = 800;
-    swapChainDesc.Height = 600;
-    swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-    swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
-    swapChainDesc.SampleDesc.Count = 1;
-    swapChainDesc.SampleDesc.Quality = 0;
-
-    ComPtr<IDXGISwapChain1> swapChain;
-    factory->CreateSwapChainForHwnd(m_commandQueue.Get(), hwnd, &swapChainDesc, nullptr, nullptr, &swapChain);
-    swapChain.As(&m_swapChain);
-
-    // Create render target view heap
-    D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
-    rtvHeapDesc.NumDescriptors = 2;
-    rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
-    m_device->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&m_renderTargetViewHeap));
-
-    // Create render target views
-    for (UINT i = 0; i < 2; i++) {
-        ComPtr<ID3D12Resource> backBuffer;
-        m_swapChain->GetBuffer(i, IID_PPV_ARGS(&backBuffer));
-        m_device->CreateRenderTargetView(backBuffer.Get(), nullptr, m_renderTargetViewHeap->GetCPUDescriptorHandleForHeapStart());
+    for (int i = 0; i < 2; i++) {
+        renderTargets[i] = nullptr;
+        commandAllocator[i] = nullptr; // Initialize commandAllocator
     }
 
-    // Create fence
-    m_device->CreateFence(m_fenceValue, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_fence));
+    rtvDescriptorSize = 0;
 }
 
-void Renderer::render(Cube& cube) {
-    // Command list recording and execution
-    // (Implementation of command list recording, resource barriers, and presenting the swap chain)
+Renderer::~Renderer() {
+    // Destructor implementation
+
+    if (device) device->Release();
+    if (commandQueue) commandQueue->Release();
+    if (swapChain) swapChain->Release();
+    if (rtvHeap) rtvHeap->Release();
+    if (pipelineState) pipelineState->Release();
+    if (commandList) commandList->Release();
+    if (fence) fence->Release();
+    if (fenceEvent) CloseHandle(fenceEvent);
+
+    for (int i = 0; i < 2; i++) {
+        if (commandAllocator[i]) commandAllocator[i]->Release();
+    }
+}
+
+bool Renderer::initialize(HWND hwnd) {
+    try {
+        createDevice();
+        createSwapChain(hwnd);
+        createCommandQueue();
+        createRenderTargetView();
+        createPipelineState();
+        createCommandList();
+        createFence();
+        return true;
+    }
+    catch (...) {
+        return false;
+    }
+}
+
+void Renderer::render() {
+    // Render implementation
+
+    // Wait for the previous frame to complete
+    const UINT64 currentFenceValue = fenceValue;
+    commandQueue->Signal(fence, currentFenceValue);
+    fenceValue++;
+
+    if (fence->GetCompletedValue() < currentFenceValue) {
+        fence->SetEventOnCompletion(currentFenceValue, fenceEvent);
+        WaitForSingleObject(fenceEvent, INFINITE);
+    }
+
+    // Get the index of the current back buffer
+    const UINT backBufferIndex = swapChain->GetCurrentBackBufferIndex();
+
+    // Record commands
+    commandAllocator[backBufferIndex]->Reset(); // Reset the command allocator
+    commandList->Reset(commandAllocator[backBufferIndex], nullptr);
+    commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[backBufferIndex], D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET));
+    CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), backBufferIndex, rtvDescriptorSize);
+    commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, nullptr);
+    const float clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };
+    commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+    commandList->SetPipelineState(pipelineState);
+    commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+    // Execute the command list
+    commandList->Close();
+    ID3D12CommandList* ppCommandLists[] = { commandList };
+    commandQueue->ExecuteCommandLists(_countof(ppCommandLists), ppCommandLists);
+
+    // Present the frame
+    swapChain->Present(1, 0);
+
+    // Signal and increment the fence value
+    commandQueue->Signal(fence, fenceValue);
 }
 
 void Renderer::cleanup() {
-    // Cleanup resources
+    // Cleanup implementation
+}
+
+void Renderer::createDevice() {
+    // Create device implementation
+}
+
+void Renderer::createSwapChain(HWND hwnd) {
+    // Create swap chain implementation
+}
+
+void Renderer::createCommandQueue() {
+    // Create command queue implementation
+}
+
+void Renderer::createRenderTargetView() {
+    // Create render target view implementation
+}
+
+void Renderer::createPipelineState() {
+    // Create pipeline state implementation
+}
+
+void Renderer::createCommandList() {
+    // Create command list implementation
+}
+
+void Renderer::createFence() {
+    // Create fence implementation
+    HRESULT hr = device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
+    if (FAILED(hr)) {
+        throw std::runtime_error("Failed to create fence.");
+    }
+
+    fenceValue = 1;
+
+    // Create an event handle to use for frame synchronization
+    fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+    if (fenceEvent == nullptr) {
+        throw std::runtime_error("Failed to create fence event.");
+    }
 }
