@@ -3,7 +3,6 @@ using System.Data;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-
 namespace UnsecureApp.Controllers
 {
     public class MyController
