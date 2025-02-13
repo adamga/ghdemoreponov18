@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Boeing 737NG</aircraft><type>Throttle Quadrant</type><uuid>5b61cbf5-1d80-4763-98b6-04f0702fd92e</uuid><author>Russ Barlow</author><description>This is a throttle quadrant for use with the x737 suite.  It uses many x737 custom datarefs. It will only work correctly with x737.
+
+for use with x737 suite as follows
+Window left  1539
+Window top 695
+window width 293
+window height 383
+ preserve aspect ratio
+
+
+
+the purpose of this instrument is to provide visual feedback on TQ state as one would see in the airplane.  You can see the Speed brake lever move, throttle movement when on autothrottle, trust reverser deployment,  trim setting, trim wheel movement, ect.  This is valuable feedback.  Assuming most serious simmers have a throttle quadrant, there are only two inputs available on the instrument.  Parking brake (click to toggle) and Engine start levers (click to grab and move to opposite position).  </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>true</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>false</compatibleFS2020><compatibleFS2024>false</compatibleFS2024><version>103</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>729</prefWidth><prefHeight>950</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform><platform>ARDUINO</platform><platform>ANY</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier><tier>PROFESSIONAL_STANDARD</tier></tiers></pluginstrument>
