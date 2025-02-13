@@ -519,8 +519,9 @@ function cbSwitchBattery(switch, dir)
   -- end
 end
 
-fs2020_variable_subscribe("L:switch_01_73X", "number", function(v)
-  SetSwitchPosition(gSwitchBattery, math.floor(v/100)+2)
+fs2020_variable_subscribe("PMDG_NG3_Data:ELEC_BatSelector", "number", function(v)
+  local position = v + 1  -- Map 0, 1, 2 to 1, 2, 3
+  SetSwitchPosition(gSwitchBattery, position)
 end)
 
 function cbGuardBattery(switch, dir)
@@ -538,7 +539,7 @@ end
 
 gSwitchBattery = AddBlackVerGuardSwitch(77, 402, false, true, true, cbSwitchBattery, cbGuardBattery)
 
-fs2020_variable_subscribe("L:switch_02_73X", "number", function(v)
+msfs_variable_subscribe("L:switch_02_73X", "number", function(v)
   CloseGuard(gSwitchBattery, v==0)
 end)
 
@@ -550,7 +551,7 @@ function cbSwitchGalley(switch, dir)
   fs2020_event("ROTOR_BRAKE", 97401)
 end
 
-fs2020_variable_subscribe("L:switch_974_73X", "number", function(v)
+msfs_variable_subscribe("L:switch_974_73X", "number", function(v)
   SetSwitchPosition(gSwitchGalley, math.floor(v/50)+1)
 end)
 
@@ -646,7 +647,7 @@ gTextDcVolt = txt_add("333", gFontDisplay..gColorDisplay, 55, 115, 85, 40)
 gTextAcAmps = txt_add("333", gFontDisplay..gColorDisplay, 145, 115, 85, 40) 
 gTextAcVolt = txt_add("333", gFontDisplay..gColorDisplay, 235, 115, 85, 40) 
 
-fs2020_variable_subscribe("L:ipcpmdg_DC_Ammeter", "number", function(v)
+msfs_variable_subscribe("L:ipcpmdg_DC_Ammeter", "number", function(v)
   if v == 999 then
     txt_set(gTextDcAmps, "")
   else
@@ -654,7 +655,7 @@ fs2020_variable_subscribe("L:ipcpmdg_DC_Ammeter", "number", function(v)
   end
 end)
 
-fs2020_variable_subscribe("L:ipcpmdg_Frequencymeter", "number", function(v)
+msfs_variable_subscribe("L:ipcpmdg_Frequencymeter", "number", function(v)
   if v == 999 then
     txt_set(gTextFreq, "")
   else
@@ -662,7 +663,7 @@ fs2020_variable_subscribe("L:ipcpmdg_Frequencymeter", "number", function(v)
   end
 end)
 
-fs2020_variable_subscribe("L:ipcpmdg_DC_Voltmeter", "number", function(v)
+msfs_variable_subscribe("L:ipcpmdg_DC_Voltmeter", "number", function(v)
   if v == 999 then
     txt_set(gTextDcVolt, "")
   else
@@ -670,7 +671,7 @@ fs2020_variable_subscribe("L:ipcpmdg_DC_Voltmeter", "number", function(v)
   end
 end)
 
-fs2020_variable_subscribe("L:ipcpmdg_AC_Ammeter", "number", function(v)
+msfs_variable_subscribe("L:ipcpmdg_AC_Ammeter", "number", function(v)
   if v == 999 then
     txt_set(gTextAcAmps, "")
   else
@@ -678,7 +679,7 @@ fs2020_variable_subscribe("L:ipcpmdg_AC_Ammeter", "number", function(v)
   end
 end)
 
-fs2020_variable_subscribe("L:ipcpmdg_AC_Voltmeter", "number", function(v)
+msfs_variable_subscribe("L:ipcpmdg_AC_Voltmeter", "number", function(v)
   if v == 999 then
     txt_set(gTextAcVolt, "")
   else
