@@ -8,6 +8,7 @@ namespace UnsecureApp.Controllers
     public class MyController
     {
 
+
         public string ReadFile(string userInput)
         {
             using (FileStream fs = File.Open(userInput, FileMode.Open))

@@ -6,5 +6,61 @@
             "main-subtitle": "The future is now with copilot",
             "main-button": "Get started"
         }
-    }
+    },
+    {
+        "language": "fr",
+        "values": {
+            "main-title": "Bienvenue dans le monde du futur",
+            "main-subtitle": "L'avenir est maintenant avec copilote",
+            "main-button": "Commencer"
+        }
+    },
+    {
+        "language": "es",
+        "values": {
+            "main-title": "Bienvenido al mundo del futuro",
+            "main-subtitle": "El futuro es ahora con copiloto",
+            "main-button": "Empezar"
+        }
+    },
+    {
+        "language": "de",
+        "values": {
+            "main-title": "Willkommen in der Welt der Zukunft",
+            "main-subtitle": "Die Zukunft ist jetzt mit Copilot",
+            "main-button": "Loslegen"
+        }
+    },
+    {
+        "language": "it",
+        "values": {
+            "main-title": "Benvenuti nel mondo del futuro",
+            "main-subtitle": "Il futuro è ora con copilota",
+            "main-button": "Iniziare"
+        }
+    },
+    {
+        "language": "pt",
+        "values": {
+            "main-title": "Bem-vindo ao mundo do futuro",
+            "main-subtitle": "O futuro é agora com copiloto",
+            "main-button": "Começar"
+        }
+    },
+    {
+        "language": "zh",
+        "values": {
+            "main-title": "欢迎来到未来的世界",
+            "main-subtitle": "未来就是现在与副驾驶",
+            "main-button": "开始"
+        }
+    },
+    {
+        "language": "",
+        // Fallback to English if no language is specified
+        // This is a common practice in localization to ensure that the application can still function even if the user's preferred language is not available.
+        // It helps to provide a better user experience by avoiding empty or untranslated strings.
+        // In this case, the empty string "" is used as a key to represent the fallback language.
+        // The values for the fallback language are the same as those for the English language.
+        // This way, if a user has not specified a preferred language, they will still see the English version of the strings.
 ]
