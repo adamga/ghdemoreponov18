@@ -1,0 +1,3 @@
+a320/Aircraft/PowerPlant/FDU1/Powered2 rw
+a320/Aircraft/Cockpit/Pedestal/ATC_FailLight/State rw
+a320/Aircraft/Navigation/ATC/DisplayCode rw
