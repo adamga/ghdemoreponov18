@@ -400,4 +400,97 @@ button_id21 = button_add("counter.png", "countert.png", 440,210,30,30,show_press
    end
    msfs_variable_subscribe( PWR_ACBUS_lvar[1],PWR_ACBUS_lvar[2], power_cb)
 
+-- Parking brake
+pb_on = 0
+function park_brk(pb_position)
+    pb_on = pb_position
+    if pb_position > 0 then
+        visible(pb_lite_img, true)
+        visible(pb_hand_on_img, true)
+        visible(pb_hand_off_img, false)
+    else
+        visible(pb_lite_img, false)
+        visible(pb_hand_on_img, false)
+        visible(pb_hand_off_img, true)
+    end
+end
+
+-- Subscribe to iFly parking brake position
+fsx_variable_subscribe("L:ParkingBrakePosition", "Bool", park_brk)
+
+function pb_toggle()
+    -- Toggle iFly parking brake
+    fsx_event("H:A2A_PARKING_BRAKE_POSITION")
+end
+
+button_id = button_add(nil, nil, 86, 698, 115, 150, pb_toggle)
+
+-- Speedbrake
+function sb_handle(sb_position)
+    local sb_disp
+    if sb_position == 0 then
+        sb_disp = 40 -- Fully retracted
+    else
+        sb_disp = 40 + sb_position * 258 -- Adjust position
+    end
+    move(sb_handle_img, nil, sb_disp, nil, nil)
+end
+
+-- Subscribe to iFly speedbrake position
+fsx_variable_subscribe("L:A_FC_SPEEDBRAKE", "Number", sb_handle)
+
+function sb_extend()
+    -- Incrementally extend speedbrake
+    fsx_event("H:A_FC_SPEEDBRAKE", "++")
+end
+
+function sb_retract()
+    -- Incrementally retract speedbrake
+    fsx_event("H:A_FC_SPEEDBRAKE", "--")
+end
+
+button_add(nil, nil, 50, 50, 100, 50, sb_extend) -- Example button for extending
+button_add(nil, nil, 50, 150, 100, 50, sb_retract) -- Example button for retracting
+
+-- Flap handle
+function flap_handle(flap_position)
+    local flap_hand_disp
+    if flap_position == 0 then -- up
+        flap_hand_disp = 284
+    elseif flap_position == 1 then -- 1
+        flap_hand_disp = 315
+    elseif flap_position == 2 then -- 2
+        flap_hand_disp = 384
+    elseif flap_position == 3 then -- 5
+        flap_hand_disp = 418
+    elseif flap_position == 4 then -- 10
+        flap_hand_disp = 472
+    elseif flap_position == 5 then -- 15
+        flap_hand_disp = 503
+    elseif flap_position == 6 then -- 25
+        flap_hand_disp = 541
+    elseif flap_position == 7 then -- 30
+        flap_hand_disp = 587
+    elseif flap_position == 8 then -- 40
+        flap_hand_disp = 644
+    end
+    move(flap_handle_img, nil, flap_hand_disp, nil, nil)
+end
+
+-- Subscribe to iFly flap position
+fsx_variable_subscribe("L:LandFlapsPos", "Number", flap_handle)
+
+function flap_increase()
+    -- Incrementally increase flaps
+    fsx_event("H:PA24_250_Flaps_Inc")
+end
+
+function flap_decrease()
+    -- Incrementally decrease flaps
+    fsx_event("H:PA24_250_Flaps_Dec")
+end
+
+button_add(nil, nil, 100, 100, 50, 50, flap_increase) -- Example button for increasing flaps
+button_add(nil, nil, 100, 200, 50, 50, flap_decrease) -- Example button for decreasing flaps
+
 
