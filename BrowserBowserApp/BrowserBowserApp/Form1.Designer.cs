@@ -65,6 +65,7 @@
             btntools = new Button();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
+            Button btnAbout = new Button();
             ((System.ComponentModel.ISupportInitialize)dgTargets).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgHostList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgscreens).BeginInit();
@@ -502,6 +503,20 @@
             btntools.Text = "Show Address Tools";
             btntools.UseVisualStyleBackColor = true;
             btntools.Click += btntools_Click;
+            // 
+            // btnAbout
+            // 
+            btnAbout.Font = new Font("Segoe UI", 11F);
+            btnAbout.Location = new Point(20, 20);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(120, 40);
+            btnAbout.Text = "About";
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += (sender, e) => {
+                AboutBox aboutBox = new AboutBox();
+                aboutBox.ShowDialog();
+            };
+            Controls.Add(btnAbout);
             // 
             // openFileDialog1
             // 
