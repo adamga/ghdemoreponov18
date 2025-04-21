@@ -102,6 +102,23 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(error => console.error('Error fetching views:', error));
   }
 
+  // Function to populate the customers dropdown
+  async function populateCustomersDropdown() {
+    try {
+        const response = await fetch('/customers');
+        const customers = await response.json();
+        const dropdown = document.getElementById('customersDropdown');
+        customers.forEach(customer => {
+            const option = document.createElement('option');
+            option.value = customer.CustomerID;
+            option.textContent = customer.CustomerName;
+            dropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Failed to fetch customers:', error);
+    }
+  }
+
   // Event listener for form submission
   document.getElementById('addEditForm').addEventListener('submit', handleFormSubmit);
 
@@ -124,4 +141,5 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fetch data views when the page loads
   populateViewsDropdown();
   fetchData();
+  populateCustomersDropdown();
 });

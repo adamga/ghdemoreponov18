@@ -93,4 +93,17 @@ router.get('/data/search', async (req, res) => {
   }
 });
 
+// Route to fetch customers
+router.get('/customers', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request().query('SELECT CustomerID, CustomerName FROM CustomersView');
+    res.json(result.recordset);
+  } catch (error) {
+    handleError(res, error);
+  } finally {
+    sql.close();
+  }
+});
+
 module.exports = router;
