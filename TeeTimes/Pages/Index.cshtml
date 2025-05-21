@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to TeeTimes</h1>
+    <p>Please select a date to view available tee times:</p>
+    <input type="date" id="datePicker" onchange="showTimes()" />
+    <div id="timesContainer" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    function showTimes() {
+        const timesContainer = document.getElementById('timesContainer');
+        const selectedDate = document.getElementById('datePicker').value;
+        if (!selectedDate) {
+            timesContainer.innerHTML = '';
+            return;
+        }
+
+        let timesHtml = '<h3>Available Times:</h3><ul>';
+        const startTime = new Date(`${selectedDate}T08:00:00`);
+        const endTime = new Date(`${selectedDate}T16:00:00`);
+
+        for (let time = startTime; time <= endTime; time.setMinutes(time.getMinutes() + 20)) {
+            timesHtml += `<li>${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>`;
+        }
+
+        timesHtml += '</ul>';
+        timesContainer.innerHTML = timesHtml;
+    }
+</script>
