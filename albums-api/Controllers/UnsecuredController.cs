@@ -7,7 +7,6 @@ namespace UnsecureApp.Controllers
 {
     public class MyController
     {
-
         public string ReadFile(string userInput)
         {
             using (FileStream fs = File.Open(userInput, FileMode.Open))
@@ -50,7 +49,11 @@ namespace UnsecureApp.Controllers
             {
                 this.Response.Write(e.ToString());
             }
-        
+        }
+
+        public string SayHelloToDipanjan()
+        {
+            return "Hello, Dipanjan!";
         }
 
         private string connectionString = "";
