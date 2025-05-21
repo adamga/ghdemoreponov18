@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Create ASP.NET Core Web App",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"new",
+				"webapp",
+				"-n",
+				"teetimebooker"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			]
+		}
+	]
+}
