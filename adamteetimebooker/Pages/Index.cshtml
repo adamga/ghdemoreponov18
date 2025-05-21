@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Select a Tee Time</h1>
+    <p>Select a date from the calendar below to view available tee times.</p>
+
+    <div>
+        <input type="date" id="teeTimeDate" class="form-control" onchange="loadTeeTimes()" />
+    </div>
+
+    <ul id="teeTimesList" class="list-group mt-3">
+        <!-- Tee times will be dynamically added here -->
+    </ul>
+</div>
+
+<script>
+    function loadTeeTimes() {
+        const dateInput = document.getElementById('teeTimeDate');
+        const teeTimesList = document.getElementById('teeTimesList');
+        teeTimesList.innerHTML = '';
+
+        if (dateInput.value) {
+            const startTime = new Date();
+            startTime.setHours(8, 0, 0, 0);
+
+            for (let i = 0; i < 10; i++) {
+                const time = new Date(startTime.getTime() + i * 20 * 60000);
+                const timeString = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = timeString;
+                teeTimesList.appendChild(listItem);
+            }
+        }
+    }
+</script>
