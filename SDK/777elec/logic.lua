@@ -93,8 +93,8 @@ img_sw_IFE_Off_X=30
 img_sw_IFE_Off_Y=90
 
 function cb_sw_IFE()
-    if (sw_IFE_pos == 0 ) then msfs_variable_write("L:XMLVAR_Utility_Ife","Number",1) 
-    elseif (sw_IFE_pos == 1 ) then msfs_variable_write("L:XMLVAR_Utility_Ife","Number",0)  
+    if (sw_IFE_pos == 0 ) then msfs_event("K:ROTOR_BRAKE", 1701) 
+    elseif (sw_IFE_pos == 1 ) then msfs_event("K:ROTOR_BRAKE", 1701)  
     end 
     sound_play(snd_click)
     move(img_sw_IFE_On, img_sw_IFE_On_X+1, img_sw_IFE_On_Y+1, nil, nil, "LOG", 0.5)    move(img_sw_IFE_Off, img_sw_IFE_Off_X+1,img_sw_IFE_Off_Y+1, nil, nil, "LOG", 0.5)
@@ -122,8 +122,8 @@ img_sw_Cabin_Off_X=87
 img_sw_Cabin_Off_Y=90
 
 function cb_sw_Cabin()
-    if (sw_Cabin_pos == 0 ) then msfs_variable_write("L:XMLVAR_Utility_Cabin","Number",1) 
-    elseif (sw_Cabin_pos == 1 ) then msfs_variable_write("L:XMLVAR_Utility_Cabin","Number",0)  
+    if (sw_Cabin_pos == 0 ) then msfs_event("K:ROTOR_BRAKE", 1801)  
+    elseif (sw_Cabin_pos == 1 ) then msfs_event("K:ROTOR_BRAKE", 1801)   
     end 
     sound_play(snd_click)
     move(img_sw_Cabin_On, img_sw_Cabin_On_X+1, img_sw_Cabin_On_Y+1, nil, nil, "LOG", 0.5)    move(img_sw_Cabin_Off, img_sw_Cabin_Off_X+1,img_sw_Cabin_Off_Y+1, nil, nil, "LOG", 0.5)
@@ -151,8 +151,8 @@ img_sw_Battery_Off_X=172
 img_sw_Battery_Off_Y=66
 
 function cb_sw_Battery()
-    if (sw_Battery_pos == 0 ) then msfs_variable_write("L:XMLVAR_Battery_Switch_State","Number",1) 
-    elseif (sw_Battery_pos == 1 ) then msfs_variable_write("L:XMLVAR_Battery_Switch_State","Number",0)  
+    if (sw_Battery_pos == 0 ) then msfs_event("K:ROTOR_BRAKE", 101)  
+    elseif (sw_Battery_pos == 1 ) then msfs_event("K:ROTOR_BRAKE", 101)  
     end 
     sound_play(snd_click)
     move(img_sw_Battery_On, img_sw_Battery_On_X+1, img_sw_Battery_On_Y+1, nil, nil, "LOG", 0.5)    move(img_sw_Battery_Off, img_sw_Battery_Off_X+1,img_sw_Battery_Off_Y+1, nil, nil, "LOG", 0.5)
