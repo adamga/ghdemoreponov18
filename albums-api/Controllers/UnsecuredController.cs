@@ -51,11 +51,6 @@ namespace UnsecureApp.Controllers
             }
         }
 
-        public string SayHelloToDipanjan()
-        {
-            return "Hello, Dipanjan!";
-        }
-
         private string connectionString = "";
     }
 }
