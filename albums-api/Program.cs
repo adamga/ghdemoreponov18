@@ -1,3 +1,31 @@
+/*
+ * File: Program.cs (albums-api)
+ * Purpose: Main entry point and configuration for the Albums API ASP.NET Core service
+ * 
+ * Description:
+ * This file contains the application startup configuration for the Albums API service.
+ * It configures the web application builder, services, middleware, CORS policies,
+ * and Dapr integration for the microservices architecture.
+ * 
+ * Logic:
+ * - Configures WebApplication builder with environment variables
+ * - Sets up CORS policy allowing all origins, headers, and methods
+ * - Adds controllers, Swagger/OpenAPI documentation, and HTTP client services
+ * - Integrates with Dapr sidecar for state management and service communication
+ * - Configures application pipeline with CORS, Swagger, and routing
+ * 
+ * Security Considerations:
+ * - CRITICAL: CORS policy allows all origins - major security vulnerability
+ * - CRITICAL: Environment variables used directly - validate and sanitize inputs
+ * - CRITICAL: HTTP client without proper security configuration
+ * - CRITICAL: No authentication or authorization configured
+ * - CRITICAL: Swagger UI exposed in production - information disclosure risk
+ * - CORS should be restricted to specific allowed origins
+ * - Environment variables should be validated for format and content
+ * - Authentication middleware should be added for protected endpoints
+ * - Swagger should be disabled in production environments
+ */
+
 var builder = WebApplication.CreateBuilder(args);
 
 var DefaultHttpPort = Environment.GetEnvironmentVariable("DAPR_HTTP_PORT") ?? "3500";

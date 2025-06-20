@@ -1,3 +1,30 @@
+/**
+ * File: scripts.js
+ * Purpose: Client-side JavaScript for Adventure Forms data visualization and interaction
+ * 
+ * Description:
+ * This file contains client-side JavaScript functionality for the Adventure Forms application.
+ * It handles DOM manipulation, AJAX requests for data fetching, table rendering, and user
+ * interactions for dynamic data visualization based on selected views.
+ * 
+ * Logic:
+ * - DOM content loaded event handler for initialization
+ * - fetchData function to retrieve data from /api/data endpoint via fetch API
+ * - Dynamic table rendering with user data (firstName, lastName, email)
+ * - View-based data filtering through query parameters
+ * - DOM manipulation for table population and user interface updates
+ * 
+ * Security Considerations:
+ * - CRITICAL: DOM manipulation with unescaped user data - XSS vulnerability
+ * - CRITICAL: innerHTML usage with server data - code injection risk
+ * - CRITICAL: Fetch API without input validation - potential for malicious responses
+ * - CRITICAL: Query parameter construction without encoding - URL injection
+ * - User data should be HTML-encoded before DOM insertion
+ * - Server responses should be validated and sanitized
+ * - Use textContent instead of innerHTML for user data
+ * - Implement Content Security Policy to prevent XSS attacks
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch data from the server and display it in the table
   function fetchData(view = '') {
