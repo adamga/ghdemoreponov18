@@ -1,3 +1,32 @@
+/*
+ * File: Form1.cs
+ * Purpose: Main form implementation for BrowserBowser application with WebView2 browser functionality
+ * 
+ * Description:
+ * This file implements the primary user interface and core functionality for the BrowserBowser
+ * application. It provides a Windows Forms interface with integrated WebView2 browser control,
+ * network monitoring capabilities, screen management, and user interaction features.
+ * 
+ * Logic:
+ * - Inherits from MaterialForm for modern UI styling
+ * - Manages multiple browser instances and screen displays
+ * - Handles URL navigation, validation, and tracking
+ * - Implements network connectivity monitoring
+ * - Provides user management and authentication features
+ * - Manages form collections and timers for screen automation
+ * 
+ * Security Considerations:
+ * - CRITICAL: Uses WebView2 which can execute arbitrary web content - requires careful URL validation
+ * - CRITICAL: Network operations and socket connections - validate all network inputs
+ * - CRITICAL: JSON deserialization with Newtonsoft.Json - vulnerable to deserialization attacks
+ * - CRITICAL: Email functionality via System.Net.Mail - potential for email injection attacks
+ * - CRITICAL: Cryptography operations - ensure proper key management and secure algorithms
+ * - CRITICAL: Regular expressions for URL validation - vulnerable to ReDoS attacks
+ * - CRITICAL: Dictionary operations with user-controlled keys - potential for DoS via key collisions
+ * - User input validation required for all URL and form inputs
+ * - Screen capture and automation features may expose sensitive information
+ */
+
 using Microsoft.Web.WebView2.WinForms;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -553,7 +582,7 @@ namespace BrowserBowserApp
                 btnClose.Font = new Font("Arial", 14, FontStyle.Bold);
 
                 Button btnRefresh = new Button();
-                btnRefresh.Text = "­®";
+                btnRefresh.Text = "ï¿½ï¿½";
                 btnRefresh.Click += (s, ev) => { webView.Reload(); };
                 //put the button in the top left corner of the form, beside the close button, 20 pixels to the right
                 btnRefresh.Left = btnClose.Right + 10;

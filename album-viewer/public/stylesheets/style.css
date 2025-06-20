@@ -1,3 +1,25 @@
+/**
+ * File: style.css
+ * Purpose: Stylesheet for album viewer application UI components
+ * 
+ * Description:
+ * This CSS file defines the visual styling for the album viewer web application.
+ * It provides consistent typography, spacing, and color schemes for album display
+ * components including titles and metadata information.
+ * 
+ * Logic:
+ * - .album-title: Styles main album title display with larger font and padding
+ * - .meta-info: Styles secondary metadata with smaller font and muted color
+ * - Uses web-safe font stack with fallbacks (Lucida Grande -> Helvetica -> Arial -> sans-serif)
+ * - Applies consistent 10px padding across both component types
+ * 
+ * Security Considerations:
+ * - CSS injection vulnerabilities if user content is inserted into style attributes
+ * - Font loading from external sources could potentially be used for tracking
+ * - Color values and font specifications are static and pose minimal security risk
+ * - No external resources or imports that could introduce security vulnerabilities
+ */
+
 .album-title {
   padding: 10px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;

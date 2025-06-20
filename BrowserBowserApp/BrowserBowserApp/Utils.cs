@@ -1,4 +1,28 @@
-﻿using Microsoft.Web.WebView2.WinForms;
+/*
+ * File: Utils.cs
+ * Purpose: Utility classes and data structures for BrowserBowser application
+ * 
+ * Description:
+ * This file contains utility classes and data structures used throughout the BrowserBowser
+ * application. It defines URL information containers, combined objects for data binding,
+ * and other helper classes to support the main application functionality.
+ * 
+ * Logic:
+ * - urlinfos class: Contains URL string and display configuration (fullscreen, closerefresh)
+ * - CombinedObject class: Data binding container for UI elements with URL and display properties
+ * - Provides structured data types for managing browser window configurations
+ * - Supports both programmatic access and UI data binding scenarios
+ * 
+ * Security Considerations:
+ * - CRITICAL: URL properties require validation to prevent malicious URL injection
+ * - URL strings should be validated against allowed protocols (http/https only)
+ * - Fullscreen and closerefresh boolean properties could be manipulated for clickjacking
+ * - Data binding objects should sanitize all string properties before display
+ * - Consider URL length limits to prevent buffer overflow or DoS attacks
+ * - Validate URL format to prevent JavaScript injection through data: or javascript: schemes
+ */
+
+using Microsoft.Web.WebView2.WinForms;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;

@@ -8,6 +8,31 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+//
+// File: Export.cpp
+// Purpose: Mesh data export functionality for DirectX 12 mesh shader samples
+//
+// Description:
+// This file implements mesh data serialization and export capabilities for the
+// D3D12 mesh shader wavefront converter. It handles the conversion of mesh data
+// into a custom binary format optimized for mesh shader rendering pipelines.
+//
+// Logic:
+// - Defines binary file format structures (FileHeader, MeshHeader, BufferView, Accessor)
+// - Implements ExportMeshes function to serialize mesh data to binary files
+// - Handles memory alignment for GPU-optimized data layouts
+// - Manages buffer views and accessors for efficient GPU resource binding
+// - Processes vertex attributes, indices, meshlets, and culling data
+//
+// Security Considerations:
+// - CRITICAL: File I/O operations - validate file paths to prevent directory traversal
+// - CRITICAL: Binary data serialization - ensure buffer bounds checking
+// - CRITICAL: Memory alignment operations - prevent integer overflow in size calculations
+// - CRITICAL: ofstream operations - validate write permissions and disk space
+// - File format parsing requires careful validation of structure sizes and counts
+// - Mesh data should be validated for reasonable bounds before serialization
+//
+//*********************************************************
 #include "stdafx.h"
 #include "Export.h"
 
