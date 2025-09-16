@@ -15,5 +15,6 @@
             "password": "Squire560!!",
             "database": "AdventureWorks2014"
         }
-    ]
+    ],
+    "azureTerraform.checkTerraformCmd": false
 }
