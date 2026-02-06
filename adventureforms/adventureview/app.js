@@ -27,6 +27,48 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
+// New: simple API endpoint for "Hello World"
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello World' });
+});
+
+// New: minimal UI page with a "Hello World" button
+app.get('/hello', (req, res) => {
+  res.type('html').send(`
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body style="font-family: system-ui, sans-serif; padding: 24px;">
+    <button id="helloBtn" type="button" aria-label="Hello World">Hello World</button>
+    <pre id="out" style="margin-top: 16px;"></pre>
+
+    <script>
+      const btn = document.getElementById('helloBtn');
+      const out = document.getElementById('out');
+
+      btn.addEventListener('click', async () => {
+        out.textContent = 'Loading...';
+        try {
+          const r = await fetch('/api/hello');
+          if (!r.ok) {
+            throw new Error('Request failed');
+          }
+          const data = await r.json();
+          out.textContent = data.message;
+        } catch (error) {
+          out.textContent = 'Error: ' + error.message;
+        }
+      });
+    </script>
+  </body>
+</html>
+  `.trim());
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');

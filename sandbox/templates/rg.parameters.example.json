@@ -1,0 +1,111 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": { "value": "eastus" },
+    "tags": {
+      "value": {
+        "env": "sandbox",
+        "owner": "you"
+      }
+    },
+
+    "vnetName": { "value": "sandbox-vnet" },
+    "vnetAddressPrefixes": { "value": [ "10.40.0.0/16" ] },
+    "subnets": {
+      "value": [
+        {
+          "name": "workload",
+          "addressPrefix": "10.40.1.0/24",
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        {
+          "name": "private-endpoints",
+          "addressPrefix": "10.40.2.0/24",
+          "privateEndpointNetworkPolicies": "Disabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        }
+      ]
+    },
+
+    "privateDnsZones": {
+      "value": [
+        "privatelink.vaultcore.azure.net",
+        "privatelink.azconfig.io",
+        "privatelink.blob.core.windows.net"
+      ]
+    },
+
+    "deployMonitoring": { "value": true },
+    "logAnalyticsWorkspaceName": { "value": "sandbox-law" },
+    "applicationInsightsName": { "value": "sandbox-appinsights" },
+
+    "keyVaults": {
+      "value": [
+        {
+          "name": "sandbox-kv-1",
+          "skuName": "standard",
+          "enableRbacAuthorization": true,
+          "publicNetworkAccess": "Disabled"
+        },
+        {
+          "name": "sandbox-kv-2",
+          "skuName": "standard",
+          "enableRbacAuthorization": true,
+          "publicNetworkAccess": "Disabled"
+        }
+      ]
+    },
+
+    "appConfigurations": {
+      "value": [
+        {
+          "name": "sandbox-appconfig",
+          "skuName": "standard",
+          "publicNetworkAccess": "Disabled"
+        }
+      ]
+    },
+
+    "storageAccounts": {
+      "value": [
+        {
+          "name": "sandboxteststg01",
+          "skuName": "Standard_LRS",
+          "kind": "StorageV2",
+          "publicNetworkAccess": "Disabled"
+        }
+      ]
+    },
+
+    "privateEndpoints": {
+      "value": [
+        {
+          "name": "pe-kv-1",
+          "subnetName": "private-endpoints",
+          "privateLinkResourceType": "Microsoft.KeyVault/vaults",
+          "privateLinkResourceName": "sandbox-kv-1",
+          "groupIds": [ "vault" ],
+          "privateDnsZoneNames": [ "privatelink.vaultcore.azure.net" ]
+        },
+        {
+          "name": "pe-appconfig",
+          "subnetName": "private-endpoints",
+          "privateLinkResourceType": "Microsoft.AppConfiguration/configurationStores",
+          "privateLinkResourceName": "sandbox-appconfig",
+          "groupIds": [ "configurationStores" ],
+          "privateDnsZoneNames": [ "privatelink.azconfig.io" ]
+        },
+        {
+          "name": "pe-stg-blob",
+          "subnetName": "private-endpoints",
+          "privateLinkResourceType": "Microsoft.Storage/storageAccounts",
+          "privateLinkResourceName": "sandboxteststg01",
+          "groupIds": [ "blob" ],
+          "privateDnsZoneNames": [ "privatelink.blob.core.windows.net" ]
+        }
+      ]
+    }
+  }
+}

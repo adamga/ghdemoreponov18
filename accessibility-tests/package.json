@@ -1,0 +1,20 @@
+{
+  "name": "accessibility-tests",
+  "version": "1.0.0",
+  "description": "WCAG 2.1 accessibility tests using Selenium WebDriver",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/run-all-tests.js",
+    "test:album-viewer": "node tests/album-viewer.test.js",
+    "test:adventureview": "node tests/adventureview.test.js"
+  },
+  "keywords": ["accessibility", "wcag", "selenium", "a11y"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.16.0",
+    "@axe-core/webdriverjs": "^4.8.3",
+    "chromedriver": "^120.0.1",
+    "colors": "^1.4.0"
+  }
+}
