@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "environmentName": {
+      "value": "my-albums-env"
+    },
+    "logAnalyticsWorkspaceName": {
+      "value": "my-albums-law"
+    },
+    "appInsightsName": {
+      "value": "my-albums-insights"
+    },
+    "storageAccountName": {
+      "value": "myalbumsstorage"
+    },
+    "blobContainerName": {
+      "value": "albums"
+    },
+    "containerRegistryName": {
+      "value": "mycontainerregistry"
+    },
+    "containerRegistryUsername": {
+      "value": "mycontainerregistry"
+    },
+    "containerRegistryPassword": {
+      "value": "YOUR_REGISTRY_PASSWORD_HERE"
+    },
+    "albumApiImage": {
+      "value": "mycontainerregistry.azurecr.io/album-api:latest"
+    },
+    "albumViewerImage": {
+      "value": "mycontainerregistry.azurecr.io/album-viewer:latest"
+    },
+    "albumApiName": {
+      "value": "album-api"
+    },
+    "albumViewerName": {
+      "value": "album-viewer"
+    },
+    "tags": {
+      "value": {
+        "app": "dapr-albums",
+        "environment": "sandbox",
+        "owner": "your-name"
+      }
+    }
+  }
+}

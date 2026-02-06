@@ -158,3 +158,73 @@ That IaC deploys a simpler environment than what your screenshot appears to show
   - App Insights instrumentation key is wired for Dapr telemetry
 
 If your screenshot is from a different/supplemental sandbox (more Private Link-heavy), you may have *two* separate “environments” to understand: the repo’s Container Apps sample and the broader sandbox depicted in the screenshot.
+
+---
+
+## Appendix B: Your Private Sandbox Deployments
+
+Based on the analysis above, **two deployment options** have been created in the `sandbox/` folder for your private use:
+
+### B.1 Sandbox Option 1: Private Link Infrastructure
+
+**Template:** `sandbox/templates/rg.main.json`
+
+This template recreates a Private Link-oriented environment similar to what's depicted in the topology screenshot:
+- Virtual Network with subnets for workloads and private endpoints
+- Private DNS zones for Azure services
+- Key Vaults, App Configuration stores, and Storage Accounts
+- Private Endpoints connecting services to your VNet
+- Optional monitoring (Log Analytics + Application Insights)
+
+**Use this when:** You need a secure, private networking sandbox for testing Private Link connectivity patterns, or when you need to isolate Azure PaaS services from the public internet.
+
+**Deployment:**
+```powershell
+./sandbox/deploy.ps1 -SubscriptionId <id> -ResourceGroupName <name> -Location <region> -ParametersFile sandbox/templates/rg.parameters.json
+```
+
+### B.2 Sandbox Option 2: Dapr Albums Microservices
+
+**Template:** `sandbox/templates/albums-app.json`
+
+This template deploys the complete Dapr Albums demonstration application from this repository to Azure Container Apps:
+- Container Apps Environment with Dapr enabled
+- Log Analytics Workspace and Application Insights for monitoring
+- Storage Account configured as a Dapr state store
+- Album API container app (.NET 7 backend)
+- Album Viewer container app (Node.js frontend)
+- Dapr components for service-to-service communication and state management
+
+**Use this when:** You want a complete, working copy of the albums microservices demo in your own subscription with full control over naming and configuration.
+
+**Deployment:**
+```powershell
+./sandbox/deploy-albums.ps1 -SubscriptionId <id> -ResourceGroupName <name> -Location <region> -ParametersFile sandbox/templates/albums-app.parameters.json
+```
+
+Or using bash:
+```bash
+./sandbox/deploy-albums.sh <id> <name> <region> sandbox/templates/albums-app.parameters.json
+```
+
+### B.3 Customizing Your Deployment
+
+**All resource names are fully customizable** via parameters files:
+- Copy the `.example.json` parameter files to create your own
+- Edit all names to match your naming conventions
+- Set tags for cost tracking and organization
+- Adjust SKUs and configurations as needed
+
+See `sandbox/README.md` for detailed deployment instructions, prerequisites, and troubleshooting tips.
+
+### B.4 Key Differences Between Options
+
+| Aspect | Private Link Infrastructure | Dapr Albums Application |
+|--------|---------------------------|------------------------|
+| **Focus** | Networking and private connectivity | Microservices application deployment |
+| **Resources** | VNet, Private Endpoints, DNS, PaaS services | Container Apps, Dapr components, monitoring |
+| **Complexity** | More infrastructure pieces | Application-focused |
+| **Use Case** | Testing Private Link patterns | Running the albums demo app |
+| **Can Combine?** | Yes - deploy albums app into a VNet from Option 1 (requires template modifications) |
+
+Both options give you **complete control** over resource naming through parameters, meeting the requirement for customizable naming during deployment.
