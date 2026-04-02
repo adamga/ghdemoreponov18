@@ -1,0 +1,155 @@
+// get a collection of all the screens on the system, and for each screen, output
+// the screens properties to the debug log in the format 
+// property = value
+
+
+//create units tests for xunit, that validates all of the methods in this class
+
+
+//for each of the displays attached to my pc, get the properties of the display
+//and calculate how many 120 x 90 images I can display on each display, ensuring that there
+//is at least 12 pixels horizontal and vertical between each image.
+
+
+//validate the security of this application by checking each of the methods in the form1 
+//class, and describe any security issues by writing out the issue and description to the debug
+//stream
+
+
+Inspired by https://github.com/octodemo/csharp-copilot-workshop
+
+dotnet new console -n GHCPDemo
+
+First prompt:
+
+// setup a class called User with 3 properties: Id, Name, and Email
+// The properties are defined using the get and set accessors.
+// The set accessor assigns a new value to the property, and the get accessor returns the property value.
+
+==> results:
+
+namespace GHCPDemo.Models
+{
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
+}
+
+=> Create folder Services then file UserService.cs
+
+Prompt:
+// Create a UserService class in the GHCPDemo.Services namespace that manages a list of User objects.
+// The User class has properties Id, Name, and Email.
+// The UserService class should have methods to add a user, get a user by id, update a user's details, and delete a user by id.
+
+let copilot suggest using System;
+Then help it with namespace (space) and let it generate the service.
+
+In Program.cs
+
+Prompt:
+// This file contains the Main method where you create an instance of UserService and perform operations like adding, getting, updating, and deleting users. 
+// create a main program that uses the UserService class to add, get, update, and delete a User.
+// The User class has properties Id, Name, and Email. The UserService class has methods to add a user, get a user by id, update a user's details, and delete a user by id.
+// Demonstrate these operations in the Main method.
+
+type public and let GHCP complete
+add the email to the variable (john.doe@example.com), then continue completing.
+Press enter twice
+let GHCP suggest // Add a user, then press enter
+and for each operation, it's separated by an empty line.
+
+For tests:
+
+Create a file UserServiceTests.cs
+
+Prompt:
+
+// using xUnit, create some unit tests to verify the functionality of the UserService class.
+// The tests should cover adding a user, getting a user by id, updating a user's details, and deleting a user by id.
+
+let GHCP complete the usings
+type namespace GHCPDemo.Tests
+Then let GHCP complete
+
+Complete the email in the variable.
+press enter twice to complete the completions, as they are separated by an empty line
+
+Open up csproj
+
+after the property group, type
+
+ <!-- Exclude the appsettings.*.json files from being published in the final output. -->
+ 
+ Output should be a lot, but showcase that you can cycle through suggestions within the IDE and also use the completion panel (ctrl+enter)
+ 
+Final output:
+  <ItemGroup>
+    <Content Update="appsettings.*.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+  
+*** add new functionality
+Create a new file Roles.cs
+Prompt:// add a role Enum that has the values Admin, User, and Guest.
+
+in the UserService class
+Prompt: // Create a method to assign roles to a user
+
+Can now also add tests to it in the test file...
+
+// create a test method that updates the role of a user
+
+in the UserService.cs (to showcase regex)
+// create a method that validates that the user Name can only be numbers and letters
+Output:
+
+public bool ValidateName(string name)
+{
+	return Regex.IsMatch(name, @"^[a-zA-Z0-9]+$");
+}
+
+
+----------------
+
+Notes:
+
+Best Practices for Test Generation
+Be Specific: Clearly define input parameters and expected outputs
+Think Holistically: Consider all possible scenarios your code might encounter
+Maintain Readability: Structure your prompts logically and clearly
+Iterate and Refine: Use Copilot Chat’s responses as a starting point and refine as needed
+Document Assumptions: Include any important context or business rules
+
+Strategic Approach to Test Generation
+1. Method Description and Context
+Start by providing clear context about your method’s purpose and functionality. This helps Copilot Chat understand the testing scope.
+
+Sample Prompt: "Generate unit tests for a method calculate_discount(price, discount_rate) that calculates the discounted price."
+
+2. Testing Framework Specification
+Be explicit about your testing framework to ensure compatible test generation.
+
+Sample Prompt: "Generate unit tests using pyUnit for a method calculate_discount(price, discount_rate)."
+
+3. Test Scenarios and Expected Behaviors
+Outline various scenarios with concrete examples to ensure thorough coverage.
+
+Sample Prompt: "Generate unit tests for calculate_discount(price, discount_rate) where price=100 and discount_rate=0.1 should return 90, price=200 and discount_rate=0.2 should return 160."
+
+4. Edge Case Coverage
+Don’t forget to specify edge cases that could break your code.
+
+Sample Prompt: "Include tests for edge cases such as price=0, discount_rate=0, and discount_rate=1."
+
+5. Error Handling Validation
+Ensure your tests verify proper error handling.
+
+Sample Prompt: "Include tests for invalid inputs such as negative price and discount_rate greater than 1, which should raise an exception."
+
+Crafting the Perfect Comprehensive Prompt
+Combine all elements into a detailed, structured prompt for optimal results:
+
+Sample Prompt: "Generate unit tests using pyunit for a method calculate_discount(price, discount_rate) that calculates the discounted price. The method should return 90 for price=100 and discount_rate=0.1, 160 for price=200 and discount_rate=0.2. Add tests for edge cases such as price=0, discount_rate=0, and discount_rate=1. Also, include tests for invalid inputs such as negative price and discount_rate greater than 1, which should raise an exception."

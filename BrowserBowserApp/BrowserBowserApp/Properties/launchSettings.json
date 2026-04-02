@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WebPopper": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}

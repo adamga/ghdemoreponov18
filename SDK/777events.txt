@@ -1,0 +1,1350 @@
+//PMDG/B777 300ER/Air Condition / Pressurization
+PM_OV#16001 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Air Condition and Pressurization
+PMDG_B777_OVHD_Cargo_Temp_Select_Aft_HIGH#100 (L:switch_148_a) - 50 div s0 :1 l0 0 > if{ 14807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OVHD_Cargo_Temp_Select_Aft_LOW#50 (L:switch_148_a) - 50 div s0 :1 l0 0 > if{ 14807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OVHD_Cargo_Temp_Select_Aft_OFF#0 (L:switch_148_a) - 50 div s0 :1 l0 0 > if{ 14807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OVHD_Cargo_Temp_Select_Bulk_HIGH#100 (L:switch_149_a) - 50 div s0 :1 l0 0 > if{ 14907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OVHD_Cargo_Temp_Select_Bulk_LOW#50 (L:switch_149_a) - 50 div s0 :1 l0 0 > if{ 14907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OVHD_Cargo_Temp_Select_Bulk_OFF#0 (L:switch_149_a) - 50 div s0 :1 l0 0 > if{ 14907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 14908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+//PMDG/B777 300ER/Air Conditioning and Pressurization
+PMDG_B777_Cabin_Temp_Dec#80 95 (L:CABINTempKnob,number) rng if{ 74 (>L:CABINTempKnob, number) } els{ (L:CABINTempKnob, number) 1 - 1 max (>L:CABINTempKnob, number)
+PMDG_B777_Cabin_Temp_Inc#80 95 (L:CABINTempKnob,number) rng if{ 1 (>L:CABINTempKnob, number) } els{ (L:CABINTempKnob, number) 1 + 60 min (>L:CABINTempKnob, number)
+PMDG_B777_Air_Cond_Reset#14101 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_APU_Off#(L:switch_131_a) if{ 13101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_APU_On#(L:switch_131_a) ! if{ 13101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_APU_Toggle#13101 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_C_Isln_Off#(L:switch_133_a) if{ 13301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_C_Isln_On#(L:switch_133_a) ! if{ 13301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_C_Isln_Toggle#13301 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_L_Eng_Off#(L:switch_129_a) if{ 12901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_L_Eng_On#(L:switch_129_a) ! if{ 12901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_L_Eng_Toggle#12901 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_L_Isln_Off#(L:switch_132_a) if{ 13201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_L_Isln_On#(L:switch_132_a) ! if{ 13201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_L_Isln_Toggle#13201 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_R_Eng_Off#(L:switch_130_a) if{ 13001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_R_Eng_On#(L:switch_130_a) ! if{ 13001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_R_Eng_Toggle#13001 (>K:ROTOR_BRAKE)
+PMDG_B777_Bleed_Air_R_Isln_Off#(L:switch_134_a) if{ 13401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_R_Isln_On#(L:switch_134_a) ! if{ 13401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Bleed_Air_R_Isln_Toggle#13401 (>K:ROTOR_BRAKE)
+PMDG_B777_Cabin_Temp_Inc#80 95 (L:CABINTempKnob,number) rng if{ 1 (>L:CABINTempKnob, number) } els{ (L:CABINTempKnob, number) 1 + 75 min (>L:CABINTempKnob, number)
+PMDG_B777_Equip_Cooling_Off#(L:switch_144_a) if{ 14401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Equip_Cooling_On#(L:switch_144_a) ! if{ 14401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Equip_Cooling_Toggle#14401 (>K:ROTOR_BRAKE)
+PMDG_B777_Flt_Deck_Temp_Dec#80 95 (L:FLTDeckTempKnob,number) rng if{ 74 (>L:FLTDeckTempKnob, number) } els{ (L:FLTDeckTempKnob, number) 1 - 1 max (>L:FLTDeckTempKnob, number)
+PMDG_B777_Flt_Deck_Temp_Inc#80 95 (L:FLTDeckTempKnob,number) rng if{ 1 (>L:FLTDeckTempKnob, number) } els{ (L:FLTDeckTempKnob, number) 1 + 75 min (>L:FLTDeckTempKnob, number)
+PMDG_B777_Gasper_Off#(L:switch_145_a) if{ 14501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Gasper_On#(L:switch_145_a) ! if{ 14501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Gasper_Toggle#14501 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Pack_Off#(L:switch_135_a) if{ 13501 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Pack_On#(L:switch_135_a) ! if{ 13501 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Pack_Toggle#13501 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Trim_Air_Off#(L:switch_137_a) if{ 13701 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Trim_Air_On#(L:switch_137_a) ! if{ 13701 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Trim_Air_Toggle#13701 (>K:ROTOR_BRAKE)
+PMDG_B777_Ldg_Alt_Dec#(L:switch_1261_a, number) 50 > if{ (L:LDGALTRotate, number) 5 - -50 max (>L:LDGALTRotate, number) }
+PMDG_B777_Ldg_Alt_Inc#(L:switch_1261_a, number) 50 > if{ (L:LDGALTRotate, number) 5 + 50 min (>L:LDGALTRotate, number) }
+PMDG_B777_Ldg_Alt_Off#(L:switch_1261_a) if{ 126101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ldg_Alt_On#(L:switch_1261_a) ! if{ 126101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ldg_Alt_Toggle#126101 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Value_Aft_Manual_-----#50 (L:switch_125_a) - 50 div s0 :1 l0 0 > if{ 12501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Value_Aft_Manual_Close#100 (L:switch_125_a) - 50 div s0 :1 l0 0 > if{ 12501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Value_Aft_Manual_Dec#12502 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Value_Aft_Manual_Inc#12501 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Value_Aft_Manual_Open#0 (L:switch_125_a) - 50 div s0 :1 l0 0 > if{ 12501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Value_Fwd_Manual_-----#50 (L:switch_124_a) - 50 div s0 :1 l0 0 > if{ 12401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Value_Fwd_Manual_Close#100 (L:switch_124_a) - 50 div s0 :1 l0 0 > if{ 12401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Value_Fwd_Manual_Dec#12402 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Value_Fwd_Manual_Inc#12401 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Value_Fwd_Manual_Open#0 (L:switch_124_a) - 50 div s0 :1 l0 0 > if{ 12401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Outflow_Valve_Aft_Off#(L:switch_128_a) if{ 12801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Outflow_Valve_Aft_On#(L:switch_128_a) ! if{ 12801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Outflow_Valve_Aft_Toggle#12801 (>K:ROTOR_BRAKE)
+PMDG_B777_Outflow_Valve_Fwd_Off#(L:switch_127_a) if{ 12701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Outflow_Valve_Fwd_On#(L:switch_127_a) ! if{ 12701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Outflow_Valve_Fwd_Toggle#12701 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Pack_Off#(L:switch_136_a) if{ 13601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Pack_On#(L:switch_136_a) ! if{ 13601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Pack_Toggle#13601 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Trim_Air_Off#(L:switch_138_a) if{ 13801 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Trim_Air_On#(L:switch_138_a) ! if{ 13801 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Trim_Air_Toggle#13801 (>K:ROTOR_BRAKE)
+PMDG_B777_Ram_Air_Turbine_Switch_Guard_Close#(L:switch_44_a) if{ 4401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ram_Air_Turbine_Switch_Guard_Open#(L:switch_44_a) ! if{ 4401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ram_Air_Turbine_Switch_Guard_Toggle#4401 (>K:ROTOR_BRAKE)
+PMDG_B777_Recirc_Fans_Lower_Off#(L:switch_143_a) if{ 14301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Recirc_Fans_Lower_On#(L:switch_143_a) ! if{ 14301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Recirc_Fans_Lower_Toggle#14301 (>K:ROTOR_BRAKE)
+PMDG_B777_Recirc_Fans_Upper_Off#(L:switch_142_a) if{ 14201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Recirc_Fans_Upper_On#(L:switch_142_a) ! if{ 14201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Recirc_Fans_Upper_Toggle#14201 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Anti-Ice
+PMDG_B777_L_Engine_Anti_Ice_Auto_#50 (L:switch_112_a) - 50 div s0 :1 l0 0 > if{ 11207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Engine_Anti_Ice_Dec#11208 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Engine_Anti_Ice_Inc#11207 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Engine_Anti_Ice_Off#0 (L:switch_112_a) - 50 div s0 :1 l0 0 > if{ 11207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Engine_Anti_Ice_On#100 (L:switch_112_a) - 50 div s0 :1 l0 0 > if{ 11207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Engine_Anti_Ice_Auto_#50 (L:switch_113_a) - 50 div s0 :1 l0 0 > if{ 11307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Engine_Anti_Ice_Dec#11308 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Engine_Anti_Ice_Inc#11307 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Engine_Anti_Ice_Off#0 (L:switch_113_a) - 50 div s0 :1 l0 0 > if{ 11307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Engine_Anti_Ice_On#100 (L:switch_113_a) - 50 div s0 :1 l0 0 > if{ 11307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Window_Heat_L_Fwd_Off#(L:switch_46_a) if{ 4601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_L_Fwd_On#(L:switch_46_a) ! if{ 4601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_L_Fwd_Toggle#4601 (>K:ROTOR_BRAKE)
+PMDG_B777_Window_Heat_L_Side_Off#(L:switch_45_a) if{ 4501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_L_Side_On#(L:switch_45_a) ! if{ 4501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_L_Side_Toggle#4501 (>K:ROTOR_BRAKE)
+PMDG_B777_Window_Heat_R_Fwd_Off#(L:switch_47_a) if{ 4701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_R_Fwd_On#(L:switch_47_a) ! if{ 4701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_R_Fwd_Toggle#4701 (>K:ROTOR_BRAKE)
+PMDG_B777_Window_Heat_R_Side_Off#(L:switch_48_a) if{ 4801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_R_Side_On#(L:switch_48_a) ! if{ 4801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Window_Heat_R_Side_Toggle#4801 (>K:ROTOR_BRAKE)
+PMDG_B777_Wing_Anti_Ice_Auto_#50 (L:switch_111_a) - 50 div s0 :1 l0 0 > if{ 11107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Wing_Anti_Ice_Dec#11108 (>K:ROTOR_BRAKE)
+PMDG_B777_Wing_Anti_Ice_Inc#11107 (>K:ROTOR_BRAKE)
+PMDG_B777_Wing_Anti_Ice_Off#0 (L:switch_111_a) - 50 div s0 :1 l0 0 > if{ 11107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Wing_Anti_Ice_On#100 (L:switch_111_a) - 50 div s0 :1 l0 0 > if{ 11107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+//PMDG/B777 300ER/Autopilot
+_PMDG_B777_MCP_FD1_Switch_Down#(L:switch_202_a) 0 == if{ 20201 (>K:ROTOR_BRAKE) }
+PMDG_B777_A_P_Disc_Yoke_Button_Left#108401 (>K:ROTOR_BRAKE)
+PMDG_B777_A_T_Button#20701 (>K:ROTOR_BRAKE)
+PMDG_B777_A_T_Disconnect_Throttle_Button_Left#50201 (>K:ROTOR_BRAKE)
+PMDG_B777_A_T_L_Arm#20401 (>K:ROTOR_BRAKE)
+PMDG_B777_A_T_R_Arm#20501 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_ALT_Auto_1000_Select_Toggle#22501 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_ALT_HLD_Button_Press#22601 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_ALT_Knob_DEC#225008 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_ALT_Knob_Inc#225007 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_ALT_Knob_Press#225101 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_AP_Button_Press#20301 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_AP_Disengage_Bar_Down#(L:switch_214_a) 0 == if{ 21401 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_AP_Disengage_Bar_Up#(L:switch_214_a) 100 == if{ 21401 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_AP_Disengage_Toggle#21401 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_APP_Button_Press#22801 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_AT_Arm_L_Switch_Down#(L:switch_204_a) 0 == if{ 20401 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_AT_Arm_L_Switch_Toggle#20401 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_AT_Arm_L_Switch_Up#(L:switch_204_a) 100 == if{ 20401 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_AT_Arm_R_Switch_Down#(L:switch_205_a) 0 == if{ 20501 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_AT_Arm_R_Switch_Toggle#20501 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_AT_Arm_R_Switch_Up#(L:switch_205_a) 100 == if{ 20501 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_Bank_Angle_Knob_10#20 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_15#30 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_20#40 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_25#50 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_5#10 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_AUTO#0 (L:switch_2181_a) - 10 div s0 :1 l0 0 < if{ 218101 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 218102 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_MCP_Bank_Angle_Knob_Dec#218101 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_Bank_Angle_Knob_Inc#218102 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_CLB_CON_Button_Press#20601 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_FD1_Switch_Toggle#20201 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_FD1_Switch_Up#(L:switch_202_a) 100 == if{ 20201 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_FD2_Switch#23001 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_FD2_Switch_Down#(L:switch_230_a) 0 == if{ 23001 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_FD2_Switch_Up#(L:switch_230_a) 100 == if{ 23001 (>K:ROTOR_BRAKE) }
+PMDG_B777_MCP_FLCH_Button_Press#21301 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_FO_AP_Button_Press#22901 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_HDG_HOLD_Button_Press#21901 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_HDG_Knob_Dec#218008 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_HDG_Knob_Inc#218007 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_HDG_Knob_SEL_Press#21801 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_HDG_TRK_Mode_Toggle#21601 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_IAS_MACH_Button_Press#20801 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_IAS_MACH_Knob_Dec#21008 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_IAS_MACH_Knob_Inc#21007 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_IAS_MACH_Knob_SEL_Press#210001 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_LNAV_Button_Press#21101 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_V_S_Knob_DEC#22207 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_V_S_Knob_INC#22208 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_VNAV_Button_Press#21201 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_VOR_LOC_Button_Press#22701 (>K:ROTOR_BRAKE)
+PMDG_B777_MCP_VS_FPA_Switch#22301 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Avionics
+PMDG_B777__Primary_Flight_Computers_Switch_Guard_Toggle#5601 (>K:ROTOR_BRAKE)
+PMDG_B777_ADIRU_Off#(L:switch_59_a) if{ 5901 (>K:ROTOR_BRAKE) }
+PMDG_B777_ADIRU_On#(L:switch_59_a) ! if{ 5901 (>K:ROTOR_BRAKE) }
+PMDG_B777_ADIRU_Toggle#5901 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_AIR_Button_Press#23901 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_CAM_Button_Press#24301 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_CANC_RCL_Button_Press#24701 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_CHKL_Button_Press#24401 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_COMM_Button_Press#24501 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_DOOR_Button_Press#24001 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_ELEC_Button_Press#23601 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_ENG_Button_Press#23401 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_FCTL_Button_Press#24201 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_FUEL_Button_Press#23801 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_GEAR_Button_Press#24101 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_HYD_Button_Press#23701 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_L_INBD_Button_Press#23101 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_LWR_CTR_Button_Press#23301 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_NAV_Button_Press#24601 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_R_INBD_Button_Press#23201 (>K:ROTOR_BRAKE)
+PMDG_B777_DSP_STAT_Button_Press#23501 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_AIR_DATA_ATT_ALTN_L_Button_Toggle#17001 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_AIR_DATA_ATT_ALTN_R_Button_Toggle#27801 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_ALTN_GEAR_GUARD_Toggle#29401 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_DSPL_CTRL_ALTN_Button_Toggle#16901 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_DSPL_CTRL_ALTN_R_BUTTON_TOGGLE#27701 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_FMC_Sel_Knob_AUTO#50 (L:switch_291_a) - 10 div s0 :1 l0 0 > if{ 29107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_FMC_Sel_Knob_L#0 (L:switch_291_a) - 10 div s0 :1 l0 0 > if{ 29107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_FMC_Sel_Knob_R#100 (L:switch_291_a) - 10 div s0 :1 l0 0 > if{ 29107 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29108 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_GS_Inhibit_Switch#30301 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_GS_Inhibit_Switch#30301 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_HDG_REF_BUTTON_TOGGLE#31301 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_HDG_REF_GUARD_TOGGLE#31401 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_LEFT_INBOARD_DSPL_EICAS#30 (L:switch_315_a) - 10 div s0 :1 l0 0 > if{ 31507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_LEFT_INBOARD_DSPL_MFD#20 (L:switch_315_a) - 10 div s0 :1 l0 0 > if{ 31507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_LEFT_INBOARD_DSPL_NAV#10 (L:switch_315_a) - 10 div s0 :1 l0 0 > if{ 31507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_LEFT_INBOARD_DSPL_PFD#0 (L:switch_315_a) - 10 div s0 :1 l0 0 > if{ 31507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_NAV_CDU_L_BUTTON_TOGGLE#16801 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_NAV_CDU_R_BUTTON_TOGGLE#27601 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_RIGHT_INBOARD_DSPL_EICAS#0 (L:switch_290_a) - 10 div s0 :1 l0 0 > if{ 29007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_RIGHT_INBOARD_DSPL_MFD#10 (L:switch_290_a) - 10 div s0 :1 l0 0 > if{ 29007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_RIGHT_INBOARD_DSPL_NAV#20 (L:switch_290_a) - 10 div s0 :1 l0 0 > if{ 29007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_RIGHT_INBOARD_DSPL_PFD#30 (L:switch_290_a) - 10 div s0 :1 l0 0 > if{ 29007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_TERR_OVRD_GUARD_Toggle#29801 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_TERR_OVRD_Toggle#29701 (>K:ROTOR_BRAKE) 
+PMDG_B777_Primary_Flight_Computers_Switch_Auto#(L:switch_55_a) ! if{ 5501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Primary_Flight_Computers_Switch_Disc#(L:switch_55_a) if{ 5501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Primary_Flight_Computers_Switch_Guard_Close#(L:switch_56_a) if{ 5601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Primary_Flight_Computers_Switch_Guard_Open#(L:switch_56_a) ! if{ 5601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Primary_Flight_Computers_Switch_Toggle#5501 (>K:ROTOR_BRAKE)
+PMDG_B777_Thrust_Asym_Comp_Off#(L:switch_54_a) if{ 5401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Thrust_Asym_Comp_On#(L:switch_54_a) ! if{ 5401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Thrust_Asym_Comp_Toggle#5401 (>K:ROTOR_BRAKE)
+PMDG_B777_DSPL_CTRL_Off#(L:switch_478_a) if{ 47801 (>K:ROTOR_BRAKE) }
+PMDG_B777_DSPL_CTRL_On#(L:switch_478_a) ! if{ 47801 (>K:ROTOR_BRAKE) }
+PMDG_B777_DSPL_CTRL_Toggle#47801 (>K:ROTOR_BRAKE)
+PMDG_B777_Eicas_Event_Rcd_Press#47901 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_AUTO_Press#58301 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_L_R_Press#58401 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_GC_Press#58001 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_Gain_Dec#58208 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_Gain_Inc#58207 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_MAP_Press#57901 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_TFR_Press#57601 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_Tilt_Dec#58108 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_Tilt_Inc#58107 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_WX___T_Press#57801 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Left_WX_Press#57701 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_GC_Press#59201 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_Gain_Dec#58708 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_Gain_Inc#58707 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_MAP_Press#59101 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_TFR_Press#58801 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_Tilt_Dec#58608 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_Tilt_Inc#58607 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_WX___T_Press#59001 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_Right_WX_Press#58901 (>K:ROTOR_BRAKE)
+PMDG_B777_Wx_Rdr_TEST_Press#58501 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/CPDLC
+PMDG_B777_LEFT_ACPT_Button_Press#17801 (>K:ROTOR_BRAKE)
+PMDG_B777_LEFT_CANC_Button_Press#17901 (>K:ROTOR_BRAKE)
+PMDG_B777_LEFT_RJCT_Button_Press#18001 (>K:ROTOR_BRAKE)
+PMDG_B777_RIGHT_ACPT_Button_Press#26901 (>K:ROTOR_BRAKE)
+PMDG_B777_RIGHT_CANC_Button_Press#27001 (>K:ROTOR_BRAKE)
+PMDG_B777_RIGHT_RJCT_Button_Press#27101 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Controls
+PMDG_B777_Flaps_Lever_1#507201 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_15#507401 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_20#507501 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_25#507601 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_30#507701 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_5#507301 (>K:ROTOR_BRAKE)
+PMDG_B777_Flaps_Lever_Up#507101 (>K:ROTOR_BRAKE)
+PMDG_B777_MIP_FLAP_OVRD_GUARD_Toggle#30201 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_FLAP_OVRD_Toggle#30101 (>K:ROTOR_BRAKE) 
+PMDG_B777_PED_ALTN_FLAPS_ARM_BUTTON#51001 (>K:ROTOR_BRAKE)
+PMDG_B777_PED_ALTN_FLAPS_ARM_GUARD_TOGGLE#51101 (>K:ROTOR_BRAKE)
+PMDG_B777_PED_ALTN_FLAPS_KNOB_EXT#100 (L:switch_512_a) - 50 div s0 :1 l0 0 > if{ 51202 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 51201 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_PED_ALTN_FLAPS_KNOB_OFF#50 (L:switch_512_a) - 50 div s0 :1 l0 0 > if{ 51202 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 51201 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_PED_ALTN_FLAPS_KNOB_RET#0 (L:switch_512_a) - 50 div s0 :1 l0 0 > if{ 51202 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 51201 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_PED_ALTN_PITCH_TRIM_LEVER_NOSE_DOWN#49602 (>K:ROTOR_BRAKE) 
+PMDG_B777_PED_ALTN_PITCH_TRIM_LEVER_NOSE_UP#49601 (>K:ROTOR_BRAKE) 
+PMDG_B777_PED_ALTN_PITCH_TRIM_LEVER_RELEASE#49604 (>K:ROTOR_BRAKE) 
+PMDG_B777_PED_STAB_C_CUTOUT#(L:switch_517_a) 0 == if{ 51701 (>K:ROTOR_BRAKE) }
+PMDG_B777_PED_STAB_C_NORM#(L:switch_517_a) 100 == if{ 51701 (>K:ROTOR_BRAKE) }
+PMDG_B777_PED_STAB_C_Switch_Guard_Toggle#51601 (>K:ROTOR_BRAKE)
+PMDG_B777_PED_STAB_C_Switch_Toggle#51701 (>K:ROTOR_BRAKE)
+PMDG_B777_PED_STAB_R_CUTOUT#(L:switch_519_a) 0 == if{ 51901 (>K:ROTOR_BRAKE) }
+PMDG_B777_PED_STAB_R_NORM#(L:switch_519_a) 100 == if{ 51901 (>K:ROTOR_BRAKE) }
+PMDG_B777_PED_STAB_R_Switch_Guard_Toggle#51801 (>K:ROTOR_BRAKE)
+PMDG_B777_PED_STAB_R_Switch_Toggle#51901 (>K:ROTOR_BRAKE)
+PMDG_B777_Spoiler_Arm_Toggle#(L:switch_498_a) 200 != if{ -13000 } els{ -16383 } (>K:AXIS_SPOILER_SET) 
+PMDG_B777_TOGA_SWITCH_L#50001 (>K:ROTOR_BRAKE)
+PMDG_B777_TOGA_SWITCH_R#50401 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/EFIS
+PMDG_B777_EFIS_F0__VOR_ADF_L_SWITCH_ADF_L#100 (L:switch_251_a) - 50 div sp0 :1 l0 0 < if{ 25102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25101 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_F0__VOR_ADF_L_SWITCH_OFF#50 (L:switch_251_a) - 50 div sp0 :1 l0 0 < if{ 25102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25101 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_F0__VOR_ADF_L_SWITCH_VOR_L#0 (L:switch_251_a) - 50 div sp0 :1 l0 0 < if{ 25102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25101 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_EFIS_F0__VOR_ADF_R_SWITCH_ADF_R#100 (L:switch_256_a) - 50 div sp0 :1 l0 0 < if{ 25602 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25601 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_EFIS_F0__VOR_ADF_R_SWITCH_OFF#50 (L:switch_256_a) - 50 div sp0 :1 l0 0 < if{ 25602 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25601 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_EFIS_F0__VOR_ADF_R_SWITCH_VOR_R#0 (L:switch_256_a) - 50 div sp0 :1 l0 0 < if{ 25602 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 25601 (>K:ROTOR_BRAKE) l0 -- s0 g1 } 
+PMDG_B777_EFIS_L_ARPT_Button_Press#19801 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Baro_Dec#(L:CABaroKnob, number) 5 - -50 max (>L:CABaroKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myBaroTimer)
+PMDG_B777_EFIS_L_Baro_Inc#(L:CABaroKnob, number) 5 + 50 min (>L:CABaroKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myBaroTimer)
+PMDG_B777_EFIS_L_Baro_Knob#(>L:CABaroKnob, number)
+PMDG_B777_EFIS_L_Baro_Knob_STD_Button_Press#19201 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Baro_Ref_Toggle#19001 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_DATA_Button_Press#19901 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_FPV_Button_Press#19301 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_MINS_KNOB_DEC#(L:CAMinsKnob, number) 5 - -50 max (>L:CAMinsKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myMinsTimer)
+PMDG_B777_EFIS_L_MINS_KNOB_INC#(L:CAMinsKnob, number) 5 + 50 min (>L:CAMinsKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myMinsTimer)
+PMDG_B777_EFIS_L_MINS_Knob_RST_Button_Press#18301 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_MINS_REF_BARO#(L:switch_181_a) 0 == if[ 18101 (>K:ROTOR_BRAKE) }
+PMDG_B777_EFIS_L_MINS_REF_RADIO#(L:switch_181_a) 100 == if[ 18101 (>K:ROTOR_BRAKE) }
+PMDG_B777_EFIS_L_MINS_REF_Toggle#18101 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_MTRS_Button_Press#19401 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Mode_Knob_APP#0 (L:switch_185_a) - 10 div s0 :1 l0 0 > if{ 18507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Mode_Knob_CTR_Press#18601 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Mode_Knob_Dec#18508 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Mode_Knob_Inc#18507 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Mode_Knob_MAP#20 (L:switch_185_a) - 10 div s0 :1 l0 0 > if{ 18507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Mode_Knob_PLN#30 (L:switch_185_a) - 10 div s0 :1 l0 0 > if{ 18507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Mode_Knob_VOR#10 (L:switch_185_a) - 10 div s0 :1 l0 0 > if{ 18507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_POS_Button_Press#20001 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Range_Knob_10#0 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_160#40 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_20#10 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_320#50 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_40#20 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_640#60 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_80#30 (L:switch_187_a) - 10 div s0 :1 l0 0 > if{ 18707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 18708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_EFIS_L_Range_Knob_Dec#18708 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Range_Knob_Inc#18707 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_Range_Knob_TFC_Press#18801 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_STA_Button_Press#19601 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_TERR_Button_Press#20101 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_VOR_ADF_L_SWITCH_ADF_L#100 (L:switch_184_a) - 50 div sp0 :1 l0 0 < if{ 18402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18401 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_VOR_ADF_L_SWITCH_OFF#50 (L:switch_184_a) - 50 div sp0 :1 l0 0 < if{ 18402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18401 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_VOR_ADF_L_SWITCH_VOR_L#0 (L:switch_184_a) - 50 div sp0 :1 l0 0 < if{ 18402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18401 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_VOR_ADF_R_SWITCH_ADF_R#100 (L:switch_189_a) - 50 div sp0 :1 l0 0 < if{ 18902 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18901 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_VOR_ADF_R_SWITCH_OFF#50 (L:switch_189_a) - 50 div sp0 :1 l0 0 < if{ 18902 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18901 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_VOR_ADF_R_SWITCH_VOR_R#0 (L:switch_189_a) - 50 div sp0 :1 l0 0 < if{ 18902 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } l0 0 > if{ 18901 (>K:ROTOR_BRAKE) l0 -- s0 g1 }
+PMDG_B777_EFIS_L_WPT_Button_Press#19701 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_L_WXR_Button_Press#19501 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_ARPT_Button_Press#26501 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_Baro_Dec#(L:FOBaroKnob, number) 5 - -50 max (>L:FOBaroKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myBaroTimer)
+PMDG_B777_EFIS_R_Baro_Inc#(L:FOBaroKnob, number) 5 + 50 min (>L:FOBaroKnob, number) (E:SIMULATION TIME, second) 0.04 + (>L:myBaroTimer)
+PMDG_B777_EFIS_R_Baro_Ref_Toggle#25701 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_DATA_Button_Press#26601 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_FPV_Button_Press#26001 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_MTRS_Button_Press#26101 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_POS_Button_Press#26701 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_Range_Knob_TFC_Press#25501 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_STA_Button_Press#26301 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_TERR_Button_Press#26801 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_WPT_Button_Press#26401 (>K:ROTOR_BRAKE)
+PMDG_B777_EFIS_R_WXR_Button_Press#26201 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Electrical
+PMDG_B777_Battery_Off#(L:switch_01_a) if{ 101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Battery_On#(L:switch_01_a) ! if{ 101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Battery_Toggle#101 (>K:ROTOR_BRAKE)
+PMDG_B777_Cabin_Utility_Off#(L:switch_17_a) if{ 1701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cabin_Utility_On#(L:switch_18_a) ! if{ 1801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cabin_Utility_Toggle#1801 (>K:ROTOR_BRAKE)
+PMDG_B777_Ife_Pass_Seats_Off#(L:switch_17_a) if{ 1701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ife_Pass_Seats_On#(L:switch_17_a) ! if{ 1701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ife_Pass_Seats_Toggle#1701 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_APU_Power_Test_Guard_Toggle#16001 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_APU_Power_Test_Switch_NORM#(L:switch_159_a) 100 == if{ 15901 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_APU_Power_Test_Switch_TEST#(L:switch_159_a) 0 == if{ 15901 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_APU_Power_Test_Toggle#15901 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_GND_Test_Switch_Guard_Toggle#15302 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_L_ENG_Power_Test_Guard_Toggle#16201 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_L_ENG_Power_Test_Switch_NORM#(L:switch_161_a) 100 == if{ 16101 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_L_ENG_Power_Test_Switch_TEST#(L:switch_161_a) 0 == if{ 16101 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_L_ENG_Power_Test_Switch_Toggle#16101 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_R_ENG_Power_Test_Guard_Toggle#16401 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_R_ENG_Power_Test_Switch_NORM#(L:switch_163_a) 100 == if{ 16301 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_R_ENG_Power_Test_Switch_TEST#(L:switch_163_a) 0 == if{ 16301 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_R_ENG_Power_Test_Switch_Toggle#16301 (>K:ROTOR_BRAKE)
+PMDG_B777_OVHD_Towing_Power_Switch_BATT#100 (L:switch_150_a) != if{ 15001 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_Towing_Power_Switch_Guard_Toggle#15101 (>K:ROTOR_BRAKE) }
+PMDG_B777_OVHD_Towing_Power_Switch_OFF#0 (L:switch_150_a) != if{ 15002 (>K:ROTOR_BRAKE) }
+PMDG_B777_APU_Dec#308 (>K:ROTOR_BRAKE)
+PMDG_B777_APU_Gen_Off#(L:switch_02_a) if{ 201 (>K:ROTOR_BRAKE) }
+PMDG_B777_APU_Gen_On#(L:switch_02_a) ! if{ 201 (>K:ROTOR_BRAKE) }
+PMDG_B777_APU_Gen_Toggle#201 (>K:ROTOR_BRAKE)
+PMDG_B777_APU_Inc#307 (>K:ROTOR_BRAKE)
+PMDG_B777_APU_Off#0 (L:switch_03_a) - 50 div s0 :1 l0 0 > if{ 307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_APU_On_#50 (L:switch_03_a) - 50 div s0 :1 l0 0 > if{ 307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_APU_Start#100 (L:switch_03_a) - 50 div s0 :1 l0 0 > if{ 307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Backup_Gen_L_Off#(L:switch_11_a) if{ 1101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Backup_Gen_L_On#(L:switch_11_a) ! if{ 1101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Backup_Gen_L_Toggle#1101 (>K:ROTOR_BRAKE)
+PMDG_B777_Backup_Gen_R_Off#(L:switch_12_a) if{ 1201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Backup_Gen_R_On#(L:switch_12_a) ! if{ 1201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Backup_Gen_R_Toggle#1201 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Bus_Tie_Off#(L:switch_05_a) if{ 501 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Bus_Tie_On#(L:switch_05_a) ! if{ 501 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Bus_Tie_Toggle#501 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Gen_Drive_Disc_Press#1301 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Gen_Drive_Disc_Switch_Guard_Close#(L:switch_14_a) if{ 1401 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Gen_Drive_Disc_Switch_Guard_Open#(L:switch_14_a) ! if{ 1401 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Gen_Drive_Disc_Switch_Guard_Toggle#1401 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Main_Gen_Off#(L:switch_09_a) if{ 901 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Main_Gen_On#(L:switch_09_a) ! if{ 901 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Main_Gen_Toggle#901 (>K:ROTOR_BRAKE)
+PMDG_B777_Primary_Ext_Power_Press#801 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Bus_Tie_Off#(L:switch_06_a) if{ 601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Bus_Tie_On#(L:switch_06_a) ! if{ 601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Bus_Tie_Toggle#601 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Gen_Drive_Disc_Press#1501 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Gen_Drive_Disc_Switch_Guard_Close#(L:switch_16_a) if{ 1601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Gen_Drive_Disc_Switch_Guard_Open#(L:switch_16_a) ! if{ 1601 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Gen_Drive_Disc_Switch_Guard_Toggle#1601 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Main_Gen_Off#(L:switch_10_a) if{ 1001 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Main_Gen_On#(L:switch_10_a) ! if{ 1001 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Main_Gen_Toggle#1001 (>K:ROTOR_BRAKE)
+PMDG_B777_Ram_Air_Turbine_Press#4301 (>K:ROTOR_BRAKE)
+PMDG_B777_Secondary_Ext_Power_Press#701 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Engine
+PMDG_777_Engine1_Start_Switch#9408 (>K:ROTOR_BRAKE)
+PMDG_777_Engine2_Start_Switch#9508 (>K:ROTOR_BRAKE)
+PMDG_777_FUEL_CUT_OFF_ENGINE_1_TOGGLE#52001 (>K:ROTOR_BRAKE)
+PMDG_777_FUEL_CUT_OFF_ENGINE_2_TOGGLE#52101 (>K:ROTOR_BRAKE)
+PMDG_B777_FUEL_CONTROL_LEVER_L_CUTOFF#(L:switch_520_a) 0 == if{ 52001 (>K:ROTOR_BRAKE) }
+PMDG_B777_FUEL_CONTROL_LEVER_L_RUN#(L:switch_520_a) 100 == if{ 52001 (>K:ROTOR_BRAKE) }
+PMDG_B777_FUEL_CONTROL_LEVER_R_CUTOFF#(L:switch_521_a) 0 == if{ 52101 (>K:ROTOR_BRAKE) }
+PMDG_B777_FUEL_CONTROL_LEVER_R_RUN#(L:switch_521_a) 100 == if{ 52101 (>K:ROTOR_BRAKE) }
+//PMDG/B777 300ER/Engines
+PMDG_B777_Eng_1_Reverse_Arm#49903 (>K:ROTOR_BRAKE)
+PMDG_B777_Eng_2_Reverse_Arm#507103 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_Autostart_Off#(L:switch_96_a) if{ 9601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Autostart_On#(L:switch_96_a) ! if{ 9601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Autostart_Toggle#9601 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_EEC_Mode_L_Switch_Guard_Close#(L:switch_91_a) if{ 9101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_EEC_Mode_L_Switch_Guard_Open#(L:switch_91_a) ! if{ 9101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_EEC_Mode_L_Switch_Guard_Toggle#9101 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_EEC_Mode_R_Switch_Guard_Close#(L:switch_93_a) if{ 9301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_EEC_Mode_R_Switch_Guard_Open#(L:switch_93_a) ! if{ 9301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_EEC_Mode_R_Switch_Guard_Toggle#9301 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_Start_L_Norm#(L:switch_94_a) ! if{ 9407 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Start_L_Start#(L:switch_94_a) if{ 9401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Start_L_Toggle#9401 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_Start_R_Norm#(L:switch_95_a) ! if{ 9507 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Start_R_Start#(L:switch_95_a) if{ 9501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_Start_R_Toggle#9501 (>K:ROTOR_BRAKE)
+PMDG_B777_Enigne_EEC_Mode_L_Off#(L:switch_90_a) if{ 9001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Enigne_EEC_Mode_L_On#(L:switch_90_a) ! if{ 9001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Enigne_EEC_Mode_L_Toggle#9001 (>K:ROTOR_BRAKE)
+PMDG_B777_Enigne_EEC_Mode_R_Off#(L:switch_92_a) if{ 9201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Enigne_EEC_Mode_R_On#(L:switch_92_a) ! if{ 9201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Enigne_EEC_Mode_R_Toggle#9201 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/FMS
+PMDG_B777_FMS_Left__-#36501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_0#36401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_1#35401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_2#35501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_3#35601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_4#35701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_5#35801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_6#35901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_7#36001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_8#36101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_9#36201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_A#36601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_ALT#34301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_B#36701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_BRT_Push#40002 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_BRT_Release#40004 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_C#36801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_CLR#39501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_D#36901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_DEL#39301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_DEP_ARR#34201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_DIM_Push#40001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_DIM_Release#40004 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_DOT#36301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_E#37001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_EXEC#34901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_F#37101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_FIX#34501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_FMC_COMM#347101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_G#37201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_H#37301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_HOLD#34701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_I#37401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_INIT_REF#34001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_J#37501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_K#37601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_L#37701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LEGS#34601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L1#32801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L2#32901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L3#33001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L4#33101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L5#33201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_L6#33301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R1#33401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R2#33501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R3#33601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R4#33701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R5#33801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_LSK_R6#33901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_M#37801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_MENU#35001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_N#37901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_NAV_RAD#35101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_NEXT_PAGE#35301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_O#38001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_P#38101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_PREV_PAGE#35201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_PROG#34801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_Q#38201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_R#38301 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_RTE#34101 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_S#38401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_SLASH#39401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_SP#39201 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_T#38501 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_U#38601 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_V#38701 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_VNAV#34401 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_W#38801 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_X#38901 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_Y#39001 (>K:ROTOR_BRAKE)
+PMDG_B777_FMS_Left_Z#39101 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Flight Controls
+PMDG_B777_Aileron_Trim_Left_Wing_Down#72701 (>K:ROTOR_BRAKE)
+PMDG_B777_Aileron_Trim_Release#72704 (>K:ROTOR_BRAKE)
+PMDG_B777_Aileron_Trim_Right_Wing_Down#72702 (>K:ROTOR_BRAKE)
+PMDG_B777_Manual_Rudder_Trim_Cancel_Press#72901 (>K:ROTOR_BRAKE)
+PMDG_B777_Rudder_Trim_Nose_Left#(E:SIMULATION TIME, second) (>L:myRudderTimer) (L:RudderTrimKnob, number) 11 - -50 max (>L:RudderTrimKnob, number)
+PMDG_B777_Rudder_Trim_Nose_Right#(E:SIMULATION TIME, second) (>L:myRudderTimer) (L:RudderTrimKnob, number) 11 + 50 min (>L:RudderTrimKnob, number)
+//PMDG/B777 300ER/Fuel
+PMDG_B777_Fuel_Center_Pumps_L_Off#(L:switch_109_a) if{ 10901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Center_Pumps_L_On#(L:switch_109_a) ! if{ 10901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Center_Pumps_L_Toggle#10901 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Center_Pumps_R_Off#(L:switch_110_a) if{ 11001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Center_Pumps_R_On#(L:switch_110_a) ! if{ 11001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Center_Pumps_R_Toggle#11001 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Crossfeed_Aft_Off#(L:switch_108_a) if{ 10801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Crossfeed_Aft_On#(L:switch_108_a) ! if{ 10801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Crossfeed_Aft_Toggle#10801 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Crossfeed_Fwd_Off#(L:switch_107_a) if{ 10701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Crossfeed_Fwd_On#(L:switch_107_a) ! if{ 10701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Crossfeed_Fwd_Toggle#10701 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Jettison_Arm_Off#(L:switch_102_a) if{ 10201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_Arm_On#(L:switch_102_a) ! if{ 10201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_Arm_Toggle#10201 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Jettison_L_Nozzle_Off#(L:switch_97_a) if{ 9701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_L_Nozzle_On#(L:switch_97_a) ! if{ 9701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_L_Nozzle_Switch_Guard_Close#(L:switch_98_a) if{ 9801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_L_Nozzle_Switch_Guard_Open#(L:switch_98_a) ! if{ 9801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_L_Nozzle_Switch_Guard_Toggle#9801 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Jettison_L_Nozzle_Toggle#9701 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Jettison_R_Nozzle_Off#(L:switch_99_a) if{ 9901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_R_Nozzle_On#(L:switch_99_a) ! if{ 9901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_R_Nozzle_Switch_Guard_Close#(L:switch_100_a) if{ 10001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_R_Nozzle_Switch_Guard_Open#(L:switch_100_a) ! if{ 10001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_Jettison_R_Nozzle_Switch_Guard_Toggle#10001 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_Jettison_R_Nozzle_Toggle#9901 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_L_Pumps_Aft_Off#(L:switch_105_a) if{ 10501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_L_Pumps_Aft_On#(L:switch_105_a) ! if{ 10501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_L_Pumps_Aft_Toggle#10501 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_L_Pumps_Fwd_Off#(L:switch_103_a) if{ 10301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_L_Pumps_Fwd_On#(L:switch_103_a) ! if{ 10301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_L_Pumps_Fwd_Toggle#10301 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_R_Pumps_Aft_Off#(L:switch_106_a) if{ 10601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_R_Pumps_Aft_On#(L:switch_106_a) ! if{ 10601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_R_Pumps_Aft_Toggle#10601 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_R_Pumps_Fwd_Off#(L:switch_104_a) if{ 10401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_R_Pumps_Fwd_On#(L:switch_104_a) ! if{ 10401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_R_Pumps_Fwd_Toggle#10401 (>K:ROTOR_BRAKE)
+PMDG_B777_Fuel_To_Remain_Dec#(L:switch_1011_a, number) 50 > if{ (L:FuelToRemainRotate, number) 5 - -50 max (>L:FuelToRemainRotate, number) }
+PMDG_B777_Fuel_To_Remain_Inc#(L:switch_1011_a, number) 50 > if{ (L:FuelToRemainRotate, number) 5 + 50 min (>L:FuelToRemainRotate, number) }
+PMDG_B777_Fuel_to_Remain_Off#(L:switch_1011_a) if{ 101101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_to_Remain_On#(L:switch_1011_a) ! if{ 101101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fuel_to_Remain_Toggle#101101 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Gear
+PMDG_B777_Autobrake_1#30 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_2#40 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_3#50 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_4#60 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_Dec#29208 (>K:ROTOR_BRAKE)
+PMDG_B777_Autobrake_Disarm#20 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_Inc#29207 (>K:ROTOR_BRAKE)
+PMDG_B777_Autobrake_Max_Auto#70 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_Off#10 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Autobrake_RTO#0 (L:switch_292_a) - 10 div s0 :1 l0 0 > if{ 29207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 29208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_MIP_ALTN_GEAR_Press#29301 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_ALTN_GEAR_Release#29304 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_GEAR_OVRD_GUARD_Toggle#30001 (>K:ROTOR_BRAKE) 
+PMDG_B777_MIP_GEAR_OVRD_Toggle#29901 (>K:ROTOR_BRAKE) 
+PMDG_B777_PARKING_BRAKE_LEVER_PULL#51501 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Hydraulic
+PMDG_B777_C1_Air_Demand_Pump_Auto_#50 (L:switch_36_a) - 50 div s0 :1 l0 0 > if{ 3607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C1_Air_Demand_Pump_Dec#3608 (>K:ROTOR_BRAKE)
+PMDG_B777_C1_Air_Demand_Pump_Inc#3607 (>K:ROTOR_BRAKE)
+PMDG_B777_C1_Air_Demand_Pump_Off#0 (L:switch_36_a) - 50 div s0 :1 l0 0 > if{ 3607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C1_Air_Demand_Pump_On#100 (L:switch_36_a) - 50 div s0 :1 l0 0 > if{ 3607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C1_Elec_Primary_Pump_Off#(L:switch_40_a) if{ 4001 (>K:ROTOR_BRAKE) }
+PMDG_B777_C1_Elec_Primary_Pump_On#(L:switch_40_a) ! if{ 4001 (>K:ROTOR_BRAKE) }
+PMDG_B777_C1_Elec_Primary_Pump_Toggle#4001 (>K:ROTOR_BRAKE)
+PMDG_B777_C2_Air_Demand_Pump_Auto_#50 (L:switch_37_a) - 50 div s0 :1 l0 0 > if{ 3707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C2_Air_Demand_Pump_Dec#3708 (>K:ROTOR_BRAKE)
+PMDG_B777_C2_Air_Demand_Pump_Inc#3707 (>K:ROTOR_BRAKE)
+PMDG_B777_C2_Air_Demand_Pump_Off#0 (L:switch_37_a) - 50 div s0 :1 l0 0 > if{ 3707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C2_Air_Demand_Pump_On#100 (L:switch_37_a) - 50 div s0 :1 l0 0 > if{ 3707 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3708 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_C2_Elec_Primary_Pump_Off#(L:switch_41_a) if{ 4101 (>K:ROTOR_BRAKE) }
+PMDG_B777_C2_Elec_Primary_Pump_On#(L:switch_41_a) ! if{ 4101 (>K:ROTOR_BRAKE) }
+PMDG_B777_C2_Elec_Primary_Pump_Toggle#4101 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Elec_Demand_Pump_Auto_#50 (L:switch_35_a) - 50 div s0 :1 l0 0 > if{ 3507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Elec_Demand_Pump_Dec#3508 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Elec_Demand_Pump_Inc#3507 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Elec_Demand_Pump_Off#0 (L:switch_35_a) - 50 div s0 :1 l0 0 > if{ 3507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Elec_Demand_Pump_On#100 (L:switch_35_a) - 50 div s0 :1 l0 0 > if{ 3507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Eng_Primary_Pump_Off#(L:switch_39_a) if{ 3901 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Eng_Primary_Pump_On#(L:switch_39_a) ! if{ 3901 (>K:ROTOR_BRAKE) }
+PMDG_B777_L_Eng_Primary_Pump_Toggle#3901 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Elec_Demand_Pump_Auto_#50 (L:switch_38_a) - 50 div s0 :1 l0 0 > if{ 3807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Elec_Demand_Pump_Dec#3808 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Elec_Demand_Pump_Inc#3807 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Elec_Demand_Pump_Off#0 (L:switch_38_a) - 50 div s0 :1 l0 0 > if{ 3807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Elec_Demand_Pump_On#100 (L:switch_38_a) - 50 div s0 :1 l0 0 > if{ 3807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Eng_Primary_Pump_Off#(L:switch_42_a) if{ 4201 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Eng_Primary_Pump_On#(L:switch_42_a) ! if{ 4201 (>K:ROTOR_BRAKE) }
+PMDG_B777_R_Eng_Primary_Pump_Toggle#4201 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Lights
+PMDG_B777_FWD_LEFT_FLOOD_Brightness_Knob_Dec#(L:LEFT_FLOOD_LIGHT_CONTROL) 5 - 0 max 100 min (>L:LEFT_FLOOD_LIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_FLOOD_Brightness_Knob_Inc#(L:LEFT_FLOOD_LIGHT_CONTROL) 5 + 0 max 100 min (>L:LEFT_FLOOD_LIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_INBD_DSPL_Brightness_Knob_Dec#(L:LEFT_INBD_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:LEFT_INBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_INBD_DSPL_Brightness_Knob_Inc#(L:LEFT_INBD_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:LEFT_INBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_INBD_TERR_DSPL_Brightness_Knob_Dec#(L:LEFT_INBD_TERR_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:LEFT_INBD_TERR_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_INBD_TERR_DSPL_Brightness_Knob_Inc#(L:LEFT_INBD_TERR_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:LEFT_INBD_TERR_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_OUTBD_DSPL_Brightness_Knob_Dec#(L:LEFT_OUTBD_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:LEFT_OUTBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_OUTBD_DSPL_Brightness_Knob_Inc#(L:LEFT_OUTBD_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:LEFT_OUTBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_PNL_Brightness_Knob_Dec#(L:LEFT_PANEL_LIGHT_CONTROL) 5 - 0 max 100 min (>L:LEFT_PANEL_LIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_PNL_Brightness_Knob_Dec#(L:RIGHT_PANEL_LIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_PANEL_LIGHT_CONTROL)
+PMDG_B777_FWD_LEFT_PNL_Brightness_Knob_Inc#(L:LEFT_PANEL_LIGHT_CONTROL) 5 + 0 max 100 min (>L:LEFT_PANEL_LIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_FLOOD_Brightness_Knob_Dec#(L:RIGHT_FLOOD_LIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_FLOOD_LIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_FLOOD_Brightness_Knob_Inc#(L:RIGHT_FLOOD_LIGHT_CONTROL) 5 + 0 max 100 min (>L:RIGHT_FLOOD_LIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_INBD_DSPL_Brightness_Knob_Dec#(L:RIGHT_INBD_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_INBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_INBD_DSPL_Brightness_Knob_Inc#(L:RIGHT_INBD_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:RIGHT_INBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_INBD_TERR_DSPL_Brightness_Knob_Dec#(L:RIGHT_INBD_TERR_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_INBD_TERR_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_INBD_TERR_DSPL_Brightness_Knob_Inc#(L:RIGHT_INBD_TERR_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:RIGHT_INBD_TERR_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_OUTBD_DSPL_Brightness_Knob_Dec#(L:RIGHT_OUTBD_BRIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_OUTBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_OUTBD_DSPL_Brightness_Knob_Inc#(L:RIGHT_OUTBD_BRIGHT_CONTROL) 5 + 0 max 100 min (>L:RIGHT_OUTBD_BRIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_PNL_Brightness_Knob_Dec#(L:RIGHT_PANEL_LIGHT_CONTROL) 5 - 0 max 100 min (>L:RIGHT_PANEL_LIGHT_CONTROL)
+PMDG_B777_FWD_RIGHT_PNL_Brightness_Knob_Inc#(L:RIGHT_PANEL_LIGHT_CONTROL) 5 + 0 max 100 min (>L:RIGHT_PANEL_LIGHT_CONTROL)
+PMDG_B777_Glareshield_PNL_Light_Brightness_Dec#(L:OH_GS_PANEL_LIGHT_CONTROL, number) 1 - 0 max (>L:OH_GS_PANEL_LIGHT_CONTROL)
+PMDG_B777_Glareshield_PNL_Light_Brightness_Inc#(L:OH_GS_PANEL_LIGHT_CONTROL, number) 1 + 100 min (>L:OH_GS_PANEL_LIGHT_CONTROL)
+PMDG_B777_Nav_Light_Toggle#11501 (>K:ROTOR_BRAKE)
+PMDG_B777_Taxi_Lights_Toggle#12101 (>K:ROTOR_BRAKE)
+PMDG_B777_Aisle_Stand_Flood_Light_Brightness_Dec#(L:PED_FLOOD_LIGHT_CONTROL, number) 1 - 0 max (>L:PED_FLOOD_LIGHT_CONTROL)
+PMDG_B777_Aisle_Stand_Flood_Light_Brightness_Inc#(L:PED_FLOOD_LIGHT_CONTROL, number) 1 + 100 min (>L:PED_FLOOD_LIGHT_CONTROL)
+PMDG_B777_Aisle_Stand_Panel_Light_Brightness_Dec#(L:PED_PANEL_LIGHT_CONTROL, number) 1 - 0 max (>L:PED_PANEL_LIGHT_CONTROL)
+PMDG_B777_Aisle_Stand_Panel_Light_Brightness_Inc#(L:PED_PANEL_LIGHT_CONTROL, number) 1 + 100 min (>L:PED_PANEL_LIGHT_CONTROL)
+PMDG_B777_Beacon_Light_Off#(L:switch_114_a) if{ 11401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Beacon_Light_On#(L:switch_114_a) ! if{ 11401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Beacon_Light_Toggle#11401 (>K:ROTOR_BRAKE)
+PMDG_B777_CB_Flood_Light_Brightness_Dec#(L:OH_CB_LIGHT_CONTROL, number) 1 - 0 max (>L:OH_CB_LIGHT_CONTROL)
+PMDG_B777_CB_Flood_Light_Brightness_Inc#(L:OH_CB_LIGHT_CONTROL, number) 1 + 100 min (>L:OH_CB_LIGHT_CONTROL)
+PMDG_B777_Camera_Lts_Off#(L:switch_19_a) if{ 1901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Camera_Lts_On#(L:switch_19_a) ! if{ 1901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Camera_Lts_Toggle#1901 (>K:ROTOR_BRAKE)
+PMDG_B777_Dome_Flood_Light_Brightness_Dec#(L:OH_DOME_SWITCH, number) 1 - 0 max (>L:OH_DOME_SWITCH)
+PMDG_B777_Dome_Flood_Light_Brightness_Inc#(L:OH_DOME_SWITCH, number) 1 + 100 min (>L:OH_DOME_SWITCH)
+PMDG_B777_Emer_Lights_Armed#50 (L:switch_49_a) - 50 div s0 :1 l0 0 > if{ 4907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 4908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Emer_Lights_Dec#4908 (>K:ROTOR_BRAKE)
+PMDG_B777_Emer_Lights_Inc#4907 (>K:ROTOR_BRAKE)
+PMDG_B777_Emer_Lights_Off#0 (L:switch_49_a) - 50 div s0 :1 l0 0 > if{ 4907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 4908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Emer_Lights_On#100 (L:switch_49_a) - 50 div s0 :1 l0 0 > if{ 4907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 4908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Emer_Lights_Switch_Guard_Close#(L:switch_50_a) if{ 5001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Emer_Lights_Switch_Guard_Open#(L:switch_50_a) ! if{ 5001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Emer_Lights_Switch_Guard_Toggle#5001 (>K:ROTOR_BRAKE)
+PMDG_B777_Floor_Lights_Brt#0 (L:switch_735_a) - 50 div s0 :1 l0 0 > if{ 73501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 73502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Floor_Lights_Dec#73502 (>K:ROTOR_BRAKE)
+PMDG_B777_Floor_Lights_Dim#100 (L:switch_735_a) - 50 div s0 :1 l0 0 > if{ 73501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 73502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Floor_Lights_Inc#73501 (>K:ROTOR_BRAKE)
+PMDG_B777_Floor_Lights_Off#50 (L:switch_735_a) - 50 div s0 :1 l0 0 > if{ 73501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 73502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Glareshield_Flood_Light_Brightness_Dec#(L:OH_GS_FLOOD_LIGHT_CONTROL, number) 1 - 0 max (>L:OH_GS_FLOOD_LIGHT_CONTROL)
+PMDG_B777_Glareshield_Flood_Light_Brightness_Inc#(L:OH_GS_FLOOD_LIGHT_CONTROL, number) 1 + 100 min (>L:OH_GS_FLOOD_LIGHT_CONTROL)
+PMDG_B777_Ind_Lts_Brt#50 (L:switch_118_a) - 50 div s0 :1 l0 0 > if{ 11808 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11807 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Ind_Lts_Dec#11808 (>K:ROTOR_BRAKE)
+PMDG_B777_Ind_Lts_Dim#100 (L:switch_118_a) - 50 div s0 :1 l0 0 > if{ 11808 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11807 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Ind_Lts_Inc#11807 (>K:ROTOR_BRAKE)
+PMDG_B777_Ind_Lts_Test#0 (L:switch_118_a) - 50 div s0 :1 l0 0 > if{ 11808 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 11807 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Landing_Light_Left_Off#(L:switch_22_a) if{ 2201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Left_On#(L:switch_22_a) ! if{ 2201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Left_Toggle#2201 (>K:ROTOR_BRAKE)
+PMDG_B777_Landing_Light_Nose_Off#(L:switch_23_a) if{ 2301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Nose_On#(L:switch_23_a) ! if{ 2301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Nose_Toggle#2301 (>K:ROTOR_BRAKE)
+PMDG_B777_Landing_Light_Right_Off#(L:switch_24_a) if{ 2401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Right_On#(L:switch_24_a) ! if{ 2401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Landing_Light_Right_Toggle#2401 (>K:ROTOR_BRAKE)
+PMDG_B777_Logo_Light_Off#(L:switch_116_a) if{ 11601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Logo_Light_On#(L:switch_116_a) ! if{ 11601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Logo_Light_Toggle#11601 (>K:ROTOR_BRAKE)
+PMDG_B777_Master_Bright_Off#(L:switch_2801_a) if{ 280101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Master_Bright_On#(L:switch_2801_a) ! if{ 280101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Master_Bright_Toggle#280101 (>K:ROTOR_BRAKE)
+PMDG_B777_Master_Brightness_Dec#(L:OH_MASTER_BRIGHT_ROTATE, number) 1 - 0 max (>L:OH_MASTER_BRIGHT_ROTATE)
+PMDG_B777_Master_Brightness_Inc#(L:OH_MASTER_BRIGHT_ROTATE, number) 1 + 100 min (>L:OH_MASTER_BRIGHT_ROTATE)
+PMDG_B777_Nav_Light_Off#(L:switch_115_a) if{ 11501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Nav_Light_On#(L:switch_115_a) ! if{ 11501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Ovhd_Flood_Light_Brightness_Dec#(L:OH_PANEL_LIGHT_CONTROL, number) 1 - 0 max (>L:OH_PANEL_LIGHT_CONTROL)
+PMDG_B777_Ovhd_Flood_Light_Brightness_Inc#(L:OH_PANEL_LIGHT_CONTROL, number) 1 + 100 min (>L:OH_PANEL_LIGHT_CONTROL)
+PMDG_B777_Panel_Flood_Light_Brightness_Dec#(L:OH_GS_PANEL_LIGHT_CONTROL, number) 1 - 0 max (>L:OH_GS_PANEL_LIGHT_CONTROL)
+PMDG_B777_Panel_Flood_Light_Brightness_Inc#(L:OH_GS_PANEL_LIGHT_CONTROL, number) 1 + 100 min (>L:OH_GS_PANEL_LIGHT_CONTROL)
+PMDG_B777_Pedestal_Lower_Display_Brightness_Dec#(L:PED_LOWER_BRIGHT_CONTROL, number) 1 - 0 max (>L:PED_LOWER_BRIGHT_CONTROL)
+PMDG_B777_Pedestal_Lower_Display_Brightness_Inc#(L:PED_LOWER_BRIGHT_CONTROL, number) 1 + 100 min (>L:PED_LOWER_BRIGHT_CONTROL)
+PMDG_B777_Pedestal_Lower_Terr_Display_Brightness_Dec#(L:PED_LOWER_TERR_BRIGHT_CONTROL, number) 1 - 0 max (>L:PED_LOWER_TERR_BRIGHT_CONTROL)
+PMDG_B777_Pedestal_Lower_Terr_Display_Brightness_Inc#(L:PED_LOWER_TERR_BRIGHT_CONTROL, number) 1 + 100 min (>L:PED_LOWER_TERR_BRIGHT_CONTROL)
+PMDG_B777_Pedestal_Upper_Display_Brightness_Dec#(L:PED_UPPER_BRIGHT_CONTROL, number) 1 - 0 max (>L:PED_UPPER_BRIGHT_CONTROL)
+PMDG_B777_Pedestal_Upper_Display_Brightness_Inc#(L:PED_UPPER_BRIGHT_CONTROL, number) 1 + 100 min (>L:PED_UPPER_BRIGHT_CONTROL)
+PMDG_B777_Runway_Turnoff_Light_L_Off#(L:switch_119_a) if{ 11901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Runway_Turnoff_Light_L_On#(L:switch_119_a) ! if{ 11901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Runway_Turnoff_Light_L_Toggle#11901 (>K:ROTOR_BRAKE)
+PMDG_B777_Runway_Turnoff_Light_R_Off#(L:switch_120_a) if{ 12001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Runway_Turnoff_Light_R_On#(L:switch_120_a) ! if{ 12001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Runway_Turnoff_Light_R_Toggle#12001 (>K:ROTOR_BRAKE)
+PMDG_B777_Storm_Off#(L:switch_27_a) if{ 2701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Storm_On#(L:switch_27_a) ! if{ 2701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Storm_Toggle#2701 (>K:ROTOR_BRAKE)
+PMDG_B777_Strobe_Lights_Off#(L:switch_122_a) if{ 12201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Strobe_Lights_On#(L:switch_122_a) ! if{ 12201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Strobe_Lights_Toggle#12201 (>K:ROTOR_BRAKE)
+PMDG_B777_Taxi_Lights_Off#(L:switch_121_a) if{ 12101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Taxi_Lights_On#(L:switch_121_a) ! if{ 12101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Wing_Light_Off#(L:switch_117_a) if{ 11701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Wing_Light_On#(L:switch_117_a) ! if{ 11701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Wing_Light_Toggle#11701 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/MCDU
+PMDG_B777_CDU_CENTER_BRT_Release#72504 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_BRT_SWITCH_DEC#72501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_BRT_SWITCH_INC#72502 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_CLR_Press#72001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_CLR_Release#72004 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_BRT_Release#40004 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_BRT_SWITCH_DEC#40001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_BRT_SWITCH_INC#40002 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_CLR_Press#39501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_CLR_Release#39504 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_BRT_Release#47304 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_BRT_SWITCH_DEC#47301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_BRT_SWITCH_INC#47302 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_CLR_Press#46801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_CLR_Release#46804 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_A#69101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_B#69201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_C#69301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_D#69401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_DECIMAL#68801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_DEL#71801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_DEP_ARR#66701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_E#69501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_EXEC#67401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_F#69601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_FIX#67001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_FMC_COMM#672101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_G#69701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_H#69801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_HOLD#67201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_I#69901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_INIT_REF#66501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_J#70001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_K#70101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L#70201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L1#65301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L2#65401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L3#65501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L4#65601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L5#65701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_L6#65801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_LEGS#67101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_M#70301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_MENU#67501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_N#70401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NAV_RAD#67601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NEXT_PAGE#67801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_0#68901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_1#67901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_2#68001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_3#68101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_4#68201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_5#68301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_6#68401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_7#68501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_8#68601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_NUM_9#68701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_O#70501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_P#70601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_PLAN#66801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_PLUS_MINUS#69001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_PREV_PAGE#67701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_PROG#67301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_Q#70701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R#70801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R1#65901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R2#66001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R3#66101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R4#66201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R5#66301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_R6#66401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_RTE#66601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_S#70901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_SLASH#71901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_SP#71701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_T#71001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_U#71101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_V#71201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_VNAV#66901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_W#71301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_X#71401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_Y#71501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_CENTER_KEY_Z#71601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_A#36601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_B#36701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_C#36801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_D#36901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_DECIMAL#36301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_DEL#39301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_DEP_ARR#34201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_E#37001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_EXEC#34901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_F#37101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_FIX#34501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_FMC_COMM#347101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_G#37201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_H#37301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_HOLD#34701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_I#37401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_INIT_REF#34001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_J#37501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_K#37601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L#37701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L1#32801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L2#32901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L3#33001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L4#33101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L5#33201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_L6#33301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_LEGS#34601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_M#37801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_MENU#35001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_N#37901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NAV_RAD#35101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NEXT_PAGE#35301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_0#36401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_1#35401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_2#35501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_3#35601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_4#35701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_5#35801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_6#35901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_7#36001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_8#36101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_NUM_9#36201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_O#38001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_P#38101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_PLAN#34301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_PLUS_MINUS#36501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_PREV_PAGE#35201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_PROG#34801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_Q#38201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R#38301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R1#33401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R2#33501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R3#33601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R4#33701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R5#33801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_R6#33901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_RTE#34101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_S#38401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_SLASH#39401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_SP#39201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_T#38501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_U#38601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_V#38701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_VNAV#34401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_W#38801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_X#38901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_Y#39001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_LEFT_KEY_Z#39101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_A#43901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_B#44001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_C#44101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_D#44201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_DECIMAL#43601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_DEL#46601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_DEP_ARR#41501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_E#44301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_EXEC#42201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_F#44401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_FIX#41801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_FMC_COMM#420101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_G#44501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_H#44601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_HOLD#42001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_I#44701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_INIT_REF#41301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_J#44801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_K#44901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L#45001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L1#40101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L2#40201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L3#40301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L4#40401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L5#40501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_L6#40601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_LEGS#41901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_M#45101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_MENU#42301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_N#45201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NAV_RAD#42401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NEXT_PAGE#42601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_0#43701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_1#42701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_2#42801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_3#42901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_4#43001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_5#43101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_6#43201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_7#43301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_8#43401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_NUM_9#43501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_O#45301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_P#45401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_PLAN#41601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_PLUS_MINUS#43801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_PREV_PAGE#42501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_PROG#42101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_Q#45501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R#45601 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R1#40701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R2#40801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R3#40901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R4#41001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R5#41101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_R6#41201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_RTE#41401 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_S#45701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_SLASH#46701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_SP#46501 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_T#45801 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_U#45901 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_V#46001 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_VNAV#41701 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_W#46101 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_X#46201 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_Y#46301 (>K:ROTOR_BRAKE)
+PMDG_B777_CDU_RIGHT_KEY_Z#46401 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Miscellaneous
+PMDG_B777_CCD_L_INBD_Switch_Press#48301 (>K:ROTOR_BRAKE)
+PMDG_B777_CCD_L_LWR_CTR_Switch_Press#48401 (>K:ROTOR_BRAKE)
+PMDG_B777_CCD_L_SIDE_Switch_Press#48201 (>K:ROTOR_BRAKE)
+PMDG_B777_CCD_R_INBD_Switch_Press#49001 (>K:ROTOR_BRAKE)
+PMDG_B777_CCD_R_LWR_CTR_Switch_Press#48901 (>K:ROTOR_BRAKE)
+PMDG_B777_CCD_R_SIDE_Switch_Press#49101 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_LEFT_CLOCK_Button_Press#16501 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_LEFT_MAP_Knob_Toggle#16601 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_LEFT_MIC_Button_Press#16701 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_RIGHT_CLOCK_Button_Press#27501 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_RIGHT_MAP_Knob_Toggle#27401 (>K:ROTOR_BRAKE)
+PMDG_B777_GS_RIGHT_MIC_Button_Press#27301 (>K:ROTOR_BRAKE)
+PMDG_B777_HEATER_LEFT_FOOT_Knob_High#100 (L:switch_319_a) - 50 div s0 :1 l0 0 > if{ 31907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_LEFT_FOOT_Knob_Low#50 (L:switch_319_a) - 50 div s0 :1 l0 0 > if{ 31907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_LEFT_FOOT_Knob_Off#0 (L:switch_319_a) - 50 div s0 :1 l0 0 > if{ 31907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 31908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_LEFT_SHOULDER_Knob_Dec#(L:LEFT_SHOULDER_HEATER) 5 - 0 max 100 min (>L:LEFT_SHOULDER_HEATER)
+PMDG_B777_HEATER_LEFT_SHOULDER_Knob_Inc#(L:LEFT_SHOULDER_HEATER) 5 + 0 max 100 min (>L:LEFT_SHOULDER_HEATER)
+PMDG_B777_HEATER_RIGHT_FOOT_Knob_High#100 (L:switch_288_a) - 50 div s0 :1 l0 0 > if{ 28807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 28808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_RIGHT_FOOT_Knob_Low#50 (L:switch_288_a) - 50 div s0 :1 l0 0 > if{ 28807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 28808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_RIGHT_FOOT_Knob_Off#0 (L:switch_288_a) - 50 div s0 :1 l0 0 > if{ 28807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 28808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_HEATER_RIGHT_SHOULDER_Knob_Dec#(L:RIGHT_SHOULDER_HEATER) 5 + 0 max 100 min (>L:RIGHT_SHOULDER_HEATER)
+PMDG_B777_HEATER_RIGHT_SHOULDER_Knob_Inc#(L:RIGHT_SHOULDER_HEATER) 5 + 0 max 100 min (>L:RIGHT_SHOULDER_HEATER)
+PMDG_B777_MIP_CLOCK_ET_HLD#50 (L:switch_173_a) - 50 div s0 :1 l0 0 > if{ 17307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 17308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } 
+PMDG_B777_MIP_CLOCK_ET_RESET#0 (L:switch_173_a) - 50 div s0 :1 l0 0 > if{ 17307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 17308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } 
+PMDG_B777_MIP_CLOCK_ET_RUN#100 (L:switch_173_a) - 50 div s0 :1 l0 0 > if{ 17307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 17308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 } 
+PMDG_B777_L_Wiper_Dec#2008 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Wiper_High#30 (L:switch_20_a) - 10 div s0 :1 l0 0 > if{ 2007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Wiper_Inc#2007 (>K:ROTOR_BRAKE)
+PMDG_B777_L_Wiper_Int#10 (L:switch_20_a) - 10 div s0 :1 l0 0 > if{ 2007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Wiper_Low#20 (L:switch_20_a) - 10 div s0 :1 l0 0 > if{ 2007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_L_Wiper_Off#0 (L:switch_20_a) - 10 div s0 :1 l0 0 > if{ 2007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Wiper_Dec#12308 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Wiper_High#30 (L:switch_123_a) - 10 div s0 :1 l0 0 > if{ 12307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Wiper_Inc#12307 (>K:ROTOR_BRAKE)
+PMDG_B777_R_Wiper_Int#10 (L:switch_123_a) - 10 div s0 :1 l0 0 > if{ 12307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Wiper_Low#20 (L:switch_123_a) - 10 div s0 :1 l0 0 > if{ 12307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_R_Wiper_Off#0 (L:switch_123_a) - 10 div s0 :1 l0 0 > if{ 12307 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 12308 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Serv_Intph_Off#(L:switch_51_a) if{ 5101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Serv_Intph_On#(L:switch_51_a) ! if{ 5101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Serv_Intph_Toggle#5101 (>K:ROTOR_BRAKE)
+PMDG_B777_Voice_Recorder_Auto#(L:voicerec_switch) if{ 100 (>L:voicerec_switch) }
+PMDG_B777_Voice_Recorder_On#(L:voicerec_switch) ! if{ 100 (>L:voicerec_switch) }
+PMDG_B777_Voice_Recorder_Toggle#(L:voicerec_switch) ! if{ 100 (>L:voicerec_switch) } els{ 0 (>L:voicerec_switch) }
+//PMDG/B777 300ER/Navigation
+PMDG_B777_ATC_TCAS_Mode_ALT_RPTG_OFF#10 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Alt_Source_Altn#(L:switch_743_a) ! if{ 74301 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Alt_Source_Norm#(L:switch_743_a) if{ 74301 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Alt_Source_Toggle#74301 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Left_Inner_Dec#74508 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Left_Inner_Inc#74507 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Left_Outer_Dec#74408 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Left_Outer_Inc#74407 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Right_Inner_Dec#74808 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Right_Inner_Inc#74807 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Right_Outer_Dec#74708 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Code_Selector_Right_Outer_Inc#74707 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Ident_Press#74601 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Left_ABS_REL_Abs#(L:switch_7432_a) if{ 743201 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Left_ABS_REL_Rel#(L:switch_7432_a) ! if{ 743201 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Left_ABS_REL_Toggle#743201 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Left_ABV_BLW_ABV#0 (L:switch_7431_a) - 50 div s0 :1 l0 0 > if{ 743101 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Left_ABV_BLW_BLW#100 (L:switch_7431_a) - 50 div s0 :1 l0 0 > if{ 743101 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Left_ABV_BLW_Dec#743102 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Left_ABV_BLW_Inc#743101 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Left_ABV_BLW_N#50 (L:switch_7431_a) - 50 div s0 :1 l0 0 > if{ 743101 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743102 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Right_ABS_REL_Abs#(L:switch_7434_a) if{ 743401 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Right_ABS_REL_Rel#(L:switch_7434_a) ! if{ 743401 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_Right_ABS_REL_Toggle#743401 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Right_ABV_BLW_ABV#0 (L:switch_7433_a) - 50 div s0 :1 l0 0 > if{ 743301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Right_ABV_BLW_BLW#100 (L:switch_7433_a) - 50 div s0 :1 l0 0 > if{ 743301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_Right_ABV_BLW_Dec#743302 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Right_ABV_BLW_Inc#743301 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_Right_ABV_BLW_N#50 (L:switch_7433_a) - 50 div s0 :1 l0 0 > if{ 743301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 743302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Mode_Dec#74908 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_TCAS_Mode_Inc#74907 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_TCAS_Mode_OFF#10 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Mode_STBY#0 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Mode_TA_ONLY#30 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Mode_TARA#40 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Mode_XPNDR#20 (L:switch_749_a) - 10 div s0 :1 l0 0 > if{ 74907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 74908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_ATC_TCAS_Test_Press#749101 (>K:ROTOR_BRAKE)
+PMDG_B777_ATC_XPNDR_L_R_L#(L:switch_751_a) if{ 75101 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_XPNDR_L_R_R#(L:switch_751_a) ! if{ 75101 (>K:ROTOR_BRAKE) }
+PMDG_B777_ATC_XPNDR_L_R_Toggle#75101 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Radio
+PMDG_B777_COM1_FREQ_FRAC_DEC#52808 (>K:ROTOR_BRAKE)
+PMDG_B777_COM1_FREQ_FRAC_INC#52807 (>K:ROTOR_BRAKE)
+PMDG_B777_COM1_FREQ_WHOLE_DEC#52708 (>K:ROTOR_BRAKE)
+PMDG_B777_COM1_FREQ_WHOLE_INC#52707 (>K:ROTOR_BRAKE)
+PMDG_B777_COM1_TRANSFER_SWITCH#52601 (>K:ROTOR_BRAKE)
+PMDG_B777_COM2_FREQ_FRAC_DEC#79908 (>K:ROTOR_BRAKE)
+PMDG_B777_COM2_FREQ_FRAC_INC#79907 (>K:ROTOR_BRAKE)
+PMDG_B777_COM2_FREQ_WHOLE_DEC#80008 (>K:ROTOR_BRAKE)
+PMDG_B777_COM2_FREQ_WHOLE_INC#80007 (>K:ROTOR_BRAKE)
+PMDG_B777_COM2_TRANSFER_SWITCH#80101 (>K:ROTOR_BRAKE)
+PMDG_B777_COM3_FREQ_FRAC_DEC#59808 (>K:ROTOR_BRAKE)
+PMDG_B777_COM3_FREQ_FRAC_INC#59807 (>K:ROTOR_BRAKE)
+PMDG_B777_COM3_FREQ_WHOLE_DEC#59908 (>K:ROTOR_BRAKE)
+PMDG_B777_COM3_FREQ_WHOLE_INC#59907 (>K:ROTOR_BRAKE)
+PMDG_B777_COM3_TRANSFER_SWITCH#59701 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_APP_C#10 (L:switch_575_a) - 10 div s0 :1 l0 0 > if{ 57507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_APP_Dec#57508 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_APP_Inc#57507 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_APP_L#0 (L:switch_575_a) - 10 div s0 :1 l0 0 > if{ 57507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_APP_MKR#30 (L:switch_575_a) - 10 div s0 :1 l0 0 > if{ 57507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_APP_R#20 (L:switch_575_a) - 10 div s0 :1 l0 0 > if{ 57507 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57508 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_APP_Receive_Off#(L:switch_573_a) if{ 57301 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_APP_Receive_On#(L:switch_573_a) ! if{ 57301 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_APP_Receive_Toggle#57301 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_CAB_MIC_Selector_Press#54001 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_CAB_Receive_Off#(L:switch_552_a) if{ 55201 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_CAB_Receive_On#(L:switch_552_a) ! if{ 55201 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_CAB_Receive_Toggle#55201 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_FLT_MIC_Selector_Press#53901 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_FLT_Receive_Off#(L:switch_551_a) if{ 55101 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_FLT_Receive_On#(L:switch_551_a) ! if{ 55101 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_FLT_Receive_Toggle#55101 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_Filter_Select_B#50 (L:switch_572_a) - 50 div s0 :1 l0 0 > if{ 57201 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57202 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_Filter_Select_Dec#57202 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_Filter_Select_Inc#57201 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_Filter_Select_R#100 (L:switch_572_a) - 50 div s0 :1 l0 0 > if{ 57201 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57202 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_Filter_Select_V#0 (L:switch_572_a) - 50 div s0 :1 l0 0 > if{ 57201 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 57202 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_HF_L_MIC_Selector_Press#55501 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_HF_L_Receive_Off#(L:switch_565_a) if{ 56501 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_HF_L_Receive_On#(L:switch_565_a) ! if{ 56501 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_HF_L_Receive_Toggle#56501 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_HF_R_MIC_Selector_Press#55601 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_HF_R_Receive_Off#(L:switch_566_a) if{ 56601 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_HF_R_Receive_On#(L:switch_566_a) ! if{ 56601 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_HF_R_Receive_Toggle#56601 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_MIC_INT_-----#50 (L:switch_554_a) - 50 div s0 :1 l0 0 > if{ 55401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 55402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_MIC_INT_Dec#55402 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_MIC_INT_Inc#55401 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_MIC_INT_Int#100 (L:switch_554_a) - 50 div s0 :1 l0 0 > if{ 55401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 55402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_MIC_INT_Mic#0 (L:switch_554_a) - 50 div s0 :1 l0 0 > if{ 55401 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 55402 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_PA_MIC_Selector_Press#54101 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_PA_Receive_Off#(L:switch_553_a) if{ 55301 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_PA_Receive_On#(L:switch_553_a) ! if{ 55301 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_PA_Receive_Toggle#55301 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_SAT_1_MIC_Selector_Press#55701 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_SAT_1_Receive_Off#(L:switch_567_a) if{ 56701 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_SAT_1_Receive_On#(L:switch_567_a) ! if{ 56701 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_SAT_1_Receive_Toggle#56701 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_SAT_2_MIC_Selector_Press#55801 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_SAT_2_Receive_Off#(L:switch_568_a) if{ 56801 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_SAT_2_Receive_On#(L:switch_568_a) ! if{ 56801 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_SAT_2_Receive_Toggle#56801 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_Speaker_Off#(L:switch_564_a) if{ 56401 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_Speaker_On#(L:switch_564_a) ! if{ 56401 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_Speaker_Toggle#56401 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_C_MIC_Selector_Press#53701 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_C_Receive_Off#(L:switch_549_a) if{ 54901 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_C_Receive_On#(L:switch_549_a) ! if{ 54901 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_C_Receive_Toggle#54901 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_L_MIC_Selector_Press#53601 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_L_Receive_Off#(L:switch_548_a) if{ 54801 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_L_Receive_On#(L:switch_548_a) ! if{ 54801 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_L_Receive_Toggle#54801 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_R_MIC_Selector_Press#53801 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VHF_R_Receive_Off#(L:switch_550_a) if{ 55001 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_R_Receive_On#(L:switch_550_a) ! if{ 55001 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VHF_R_Receive_Toggle#55001 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VOR_ADF_ADF_L#20 (L:switch_569_a) - 10 div s0 :1 l0 0 > if{ 56907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 56908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_VOR_ADF_ADF_R#30 (L:switch_569_a) - 10 div s0 :1 l0 0 > if{ 56907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 56908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_VOR_ADF_Dec#56908 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VOR_ADF_Inc#56907 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VOR_ADF_Receive_Off#(L:switch_571_a) if{ 57101 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VOR_ADF_Receive_On#(L:switch_571_a) ! if{ 57101 (>K:ROTOR_BRAKE) }
+PMDG_B777_CPT_ACP_VOR_ADF_Receive_Toggle#57101 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_ACP_VOR_ADF_VOR_L#0 (L:switch_569_a) - 10 div s0 :1 l0 0 > if{ 56907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 56908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_ACP_VOR_ADF_VOR_R#10 (L:switch_569_a) - 10 div s0 :1 l0 0 > if{ 56907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 56908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_CPT_RMP_AM_Press#53401 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_HF_L_Press#53301 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_HF_R_Press#53501 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_HF_Sens_Dec#52508 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_HF_Sens_Inc#52507 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_PNL_Press#53201 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_VHF_C_Press#53001 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_VHF_L_Press#52901 (>K:ROTOR_BRAKE)
+PMDG_B777_CPT_RMP_VHF_R_Press#53101 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_APP_C#10 (L:switch_752_a) - 10 div s0 :1 l0 0 > if{ 75207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_APP_Dec#75208 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_APP_Inc#75207 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_APP_L#0 (L:switch_752_a) - 10 div s0 :1 l0 0 > if{ 75207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_APP_MKR#30 (L:switch_752_a) - 10 div s0 :1 l0 0 > if{ 75207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_APP_R#20 (L:switch_752_a) - 10 div s0 :1 l0 0 > if{ 75207 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75208 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_APP_Receive_Off#(L:switch_754_a) if{ 75401 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_APP_Receive_On#(L:switch_754_a) ! if{ 75401 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_APP_Receive_Toggle#75401 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_CAB_MIC_Selector_Press#78701 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_CAB_Receive_Off#(L:switch_775_a) if{ 77501 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_CAB_Receive_On#(L:switch_775_a) ! if{ 77501 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_CAB_Receive_Toggle#77501 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_FLT_MIC_Selector_Press#78801 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_FLT_Receive_Off#(L:switch_776_a) if{ 77601 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_FLT_Receive_On#(L:switch_776_a) ! if{ 77601 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_FLT_Receive_Toggle#77601 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_Filter_Select_B#50 (L:switch_755_a) - 50 div s0 :1 l0 0 > if{ 75501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_Filter_Select_Dec#75502 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_Filter_Select_Inc#75501 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_Filter_Select_R#100 (L:switch_755_a) - 50 div s0 :1 l0 0 > if{ 75501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_Filter_Select_V#0 (L:switch_755_a) - 50 div s0 :1 l0 0 > if{ 75501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_HF_L_MIC_Selector_Press#77201 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_HF_L_Receive_Off#(L:switch_762_a) if{ 76201 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_HF_L_Receive_On#(L:switch_762_a) ! if{ 76201 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_HF_L_Receive_Toggle#76201 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_HF_R_MIC_Selector_Press#77101 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_HF_R_Receive_Off#(L:switch_761_a) if{ 76101 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_HF_R_Receive_On#(L:switch_761_a) ! if{ 76101 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_HF_R_Receive_Toggle#76101 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_MIC_INT_-----#50 (L:switch_773_a) - 50 div s0 :1 l0 0 > if{ 77301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 77302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_MIC_INT_Dec#77302 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_MIC_INT_Inc#77301 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_MIC_INT_Int#100 (L:switch_773_a) - 50 div s0 :1 l0 0 > if{ 77301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 77302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_MIC_INT_Mic#0 (L:switch_773_a) - 50 div s0 :1 l0 0 > if{ 77301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 77302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_PA_MIC_Selector_Press#78601 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_PA_Receive_Off#(L:switch_774_a) if{ 77401 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_PA_Receive_On#(L:switch_774_a) ! if{ 77401 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_PA_Receive_Toggle#77401 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_SAT_1_MIC_Selector_Press#77001 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_SAT_1_Receive_Off#(L:switch_760_a) if{ 76001 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_SAT_1_Receive_On#(L:switch_760_a) ! if{ 76001 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_SAT_1_Receive_Toggle#76001 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_SAT_2_MIC_Selector_Press#76901 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_SAT_2_Receive_Off#(L:switch_759_a) if{ 75901 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_SAT_2_Receive_On#(L:switch_759_a) ! if{ 75901 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_SAT_2_Receive_Toggle#75901 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_Speaker_Off#(L:switch_763_a) if{ 76301 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_Speaker_On#(L:switch_763_a) ! if{ 76301 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_Speaker_Toggle#76301 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_C_MIC_Selector_Press#79001 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_C_Receive_Off#(L:switch_778_a) if{ 77801 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_C_Receive_On#(L:switch_778_a) ! if{ 77801 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_C_Receive_Toggle#77801 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_L_MIC_Selector_Press#79101 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_L_Receive_Off#(L:switch_779_a) if{ 77901 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_L_Receive_On#(L:switch_779_a) ! if{ 77901 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_L_Receive_Toggle#77901 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_R_MIC_Selector_Press#78901 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VHF_R_Receive_Off#(L:switch_777_a) if{ 77701 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_R_Receive_On#(L:switch_777_a) ! if{ 77701 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VHF_R_Receive_Toggle#77701 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VOR_ADF_ADF_L#20 (L:switch_758_a) - 10 div s0 :1 l0 0 > if{ 75807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_VOR_ADF_ADF_R#30 (L:switch_758_a) - 10 div s0 :1 l0 0 > if{ 75807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_VOR_ADF_Dec#75808 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VOR_ADF_Inc#75807 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VOR_ADF_Receive_Off#(L:switch_756_a) if{ 75601 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VOR_ADF_Receive_On#(L:switch_756_a) ! if{ 75601 (>K:ROTOR_BRAKE) }
+PMDG_B777_FO_ACP_VOR_ADF_Receive_Toggle#75601 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_ACP_VOR_ADF_VOR_L#0 (L:switch_758_a) - 10 div s0 :1 l0 0 > if{ 75807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_ACP_VOR_ADF_VOR_R#10 (L:switch_758_a) - 10 div s0 :1 l0 0 > if{ 75807 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 75808 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_FO_RMP_AM_Press#79301 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_HF_L_Press#79401 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_HF_R_Press#79201 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_HF_Sens_Dec#80208 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_HF_Sens_Inc#80207 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_PNL_Press#79501 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_VHF_C_Press#79701 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_VHF_L_Press#79801 (>K:ROTOR_BRAKE)
+PMDG_B777_FO_RMP_VHF_R_Press#79601 (>K:ROTOR_BRAKE)
+PMDG_B777_OBS_Audio_Capt#0 (L:switch_648_a) - 50 div s0 :1 l0 0 > if{ 64801 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64802 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OBS_Audio_Dec#64802 (>K:ROTOR_BRAKE)
+PMDG_B777_OBS_Audio_Fo#100 (L:switch_648_a) - 50 div s0 :1 l0 0 > if{ 64801 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64802 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_OBS_Audio_Inc#64801 (>K:ROTOR_BRAKE)
+PMDG_B777_OBS_Audio_Norm#50 (L:switch_648_a) - 50 div s0 :1 l0 0 > if{ 64801 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64802 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_APP_C#10 (L:switch_646_a) - 10 div s0 :1 l0 0 > if{ 64607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_APP_Dec#64608 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_APP_Inc#64607 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_APP_L#0 (L:switch_646_a) - 10 div s0 :1 l0 0 > if{ 64607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_APP_MKR#30 (L:switch_646_a) - 10 div s0 :1 l0 0 > if{ 64607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_APP_R#20 (L:switch_646_a) - 10 div s0 :1 l0 0 > if{ 64607 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64608 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_APP_Receive_Off#(L:switch_644_a) if{ 64401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_APP_Receive_On#(L:switch_644_a) ! if{ 64401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_APP_Receive_Toggle#64401 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_CAB_MIC_Selector_Press#61101 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_CAB_Receive_Off#(L:switch_623_a) if{ 62301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_CAB_Receive_On#(L:switch_623_a) ! if{ 62301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_CAB_Receive_Toggle#62301 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_FLT_MIC_Selector_Press#61001 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_FLT_Receive_Off#(L:switch_622_a) if{ 62201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_FLT_Receive_On#(L:switch_622_a) ! if{ 62201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_FLT_Receive_Toggle#62201 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_Filter_Select_B#50 (L:switch_643_a) - 50 div s0 :1 l0 0 > if{ 64301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_Filter_Select_Dec#64302 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_Filter_Select_Inc#64301 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_Filter_Select_R#100 (L:switch_643_a) - 50 div s0 :1 l0 0 > if{ 64301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_Filter_Select_V#0 (L:switch_643_a) - 50 div s0 :1 l0 0 > if{ 64301 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64302 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_HF_L_MIC_Selector_Press#62601 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_HF_L_Receive_Off#(L:switch_636_a) if{ 63601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_HF_L_Receive_On#(L:switch_636_a) ! if{ 63601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_HF_L_Receive_Toggle#63601 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_HF_R_MIC_Selector_Press#62701 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_HF_R_Receive_Off#(L:switch_637_a) if{ 63701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_HF_R_Receive_On#(L:switch_637_a) ! if{ 63701 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_HF_R_Receive_Toggle#63701 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_MIC_INT_-----#50 (L:switch_625_a) - 50 div s0 :1 l0 0 > if{ 62501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 62502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_MIC_INT_Dec#62502 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_MIC_INT_Inc#62501 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_MIC_INT_Int#100 (L:switch_625_a) - 50 div s0 :1 l0 0 > if{ 62501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 62502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_MIC_INT_Mic#0 (L:switch_625_a) - 50 div s0 :1 l0 0 > if{ 62501 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 62502 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_PA_MIC_Selector_Press#61201 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_PA_Receive_Off#(L:switch_624_a) if{ 62401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_PA_Receive_On#(L:switch_624_a) ! if{ 62401 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_PA_Receive_Toggle#62401 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_SAT_1_MIC_Selector_Press#62801 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_SAT_1_Receive_Off#(L:switch_638_a) if{ 63801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_SAT_1_Receive_On#(L:switch_638_a) ! if{ 63801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_SAT_1_Receive_Toggle#63801 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_SAT_2_MIC_Selector_Press#62901 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_SAT_2_Receive_Off#(L:switch_639_a) if{ 63901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_SAT_2_Receive_On#(L:switch_639_a) ! if{ 63901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_SAT_2_Receive_Toggle#63901 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_Speaker_Off#(L:switch_635_a) if{ 63501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_Speaker_On#(L:switch_635_a) ! if{ 63501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_Speaker_Toggle#63501 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_C_MIC_Selector_Press#60801 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_C_Receive_Off#(L:switch_620_a) if{ 62001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_C_Receive_On#(L:switch_620_a) ! if{ 62001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_C_Receive_Toggle#62001 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_L_MIC_Selector_Press#60701 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_L_Receive_Off#(L:switch_619_a) if{ 61901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_L_Receive_On#(L:switch_619_a) ! if{ 61901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_L_Receive_Toggle#61901 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_R_MIC_Selector_Press#60901 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VHF_R_Receive_Off#(L:switch_621_a) if{ 62101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_R_Receive_On#(L:switch_621_a) ! if{ 62101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VHF_R_Receive_Toggle#62101 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VOR_ADF_ADF_L#20 (L:switch_640_a) - 10 div s0 :1 l0 0 > if{ 64007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_VOR_ADF_ADF_R#30 (L:switch_640_a) - 10 div s0 :1 l0 0 > if{ 64007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_VOR_ADF_Dec#64008 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VOR_ADF_Inc#64007 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VOR_ADF_Receive_Off#(L:switch_642_a) if{ 64201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VOR_ADF_Receive_On#(L:switch_642_a) ! if{ 64201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Observer_ACP_VOR_ADF_Receive_Toggle#64201 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_ACP_VOR_ADF_VOR_L#0 (L:switch_640_a) - 10 div s0 :1 l0 0 > if{ 64007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_ACP_VOR_ADF_VOR_R#10 (L:switch_640_a) - 10 div s0 :1 l0 0 > if{ 64007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 64008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Observer_RMP_AM_Press#60501 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_HF_L_Press#60401 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_HF_R_Press#60601 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_HF_Sens_Dec#59608 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_HF_Sens_Inc#59607 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_PNL_Press#60301 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_VHF_C_Press#60101 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_VHF_L_Press#60001 (>K:ROTOR_BRAKE)
+PMDG_B777_Observer_RMP_VHF_R_Press#60201 (>K:ROTOR_BRAKE)
+//PMDG/B777 300ER/Safety
+PMDG_B777_APU_Fire_Handle_Left#8401 (>K:ROTOR_BRAKE)
+PMDG_B777_APU_Fire_Handle_Right#8402 (>K:ROTOR_BRAKE)
+PMDG_B777_Apu_Fire_Handle_Lock_Press#(L:switch_8402_a) ! if{ 840201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Apu_Fire_Handle_Lock_Release#(L:switch_8402_a) if{ 840201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Apu_Fire_Handle_Lock_Toggle#840201 (>K:ROTOR_BRAKE)
+PMDG_B777_Apu_Fire_Handle_Pull#(L:switch_84_a) ! if{ 840101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Apu_Fire_Handle_Push#(L:switch_84_a) if{ 840101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Apu_Fire_Handle_Toggle#840101 (>K:ROTOR_BRAKE)
+PMDG_B777_Cargo_Fire_Arm_Aft_Off#(L:switch_86_a) if{ 8601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Arm_Aft_On#(L:switch_86_a) ! if{ 8601 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Arm_Aft_Toggle#8601 (>K:ROTOR_BRAKE)
+PMDG_B777_Cargo_Fire_Arm_Fwd_Off#(L:switch_85_a) if{ 8501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Arm_Fwd_On#(L:switch_85_a) ! if{ 8501 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Arm_Fwd_Toggle#8501 (>K:ROTOR_BRAKE)
+PMDG_B777_Cargo_Fire_Disch_Press#8701 (>K:ROTOR_BRAKE)
+PMDG_B777_Cargo_Fire_Disch_Switch_Guard_Close#(L:switch_88_a) if{ 8801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Disch_Switch_Guard_Open#(L:switch_88_a) ! if{ 8801 (>K:ROTOR_BRAKE) }
+PMDG_B777_Cargo_Fire_Disch_Switch_Guard_Toggle#8801 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_1_Fire_Handle_Left#8401 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_1_Fire_Handle_Lock_Press#(L:switch_6512_a) ! if{ 651201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_1_Fire_Handle_Lock_Release#(L:switch_6512_a) if{ 651201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_1_Fire_Handle_Lock_Toggle#651201 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_1_Fire_Handle_Pull#(L:switch_651_a) ! if{ 65101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_1_Fire_Handle_Push#(L:switch_651_a) if{ 65101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_1_Fire_Handle_Right#65102 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_1_Fire_Handle_Toggle#65101 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_2_Fire_Handle_Left#65101 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_2_Fire_Handle_Lock_Press#(L:switch_6522_a) ! if{ 652201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_2_Fire_Handle_Lock_Release#(L:switch_6522_a) if{ 652201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_2_Fire_Handle_Lock_Toggle#652201 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_2_Fire_Handle_Pull#(L:switch_652_a) ! if{ 65201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_2_Fire_Handle_Push#(L:switch_652_a) if{ 65201 (>K:ROTOR_BRAKE) }
+PMDG_B777_Engine_2_Fire_Handle_Right#65102 (>K:ROTOR_BRAKE)
+PMDG_B777_Engine_2_Fire_Handle_Toggle#65201 (>K:ROTOR_BRAKE)
+PMDG_B777_Evac_Signal_Command_Off#(L:switch_739_a) if{ 73901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Command_On#(L:switch_739_a) ! if{ 73901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Command_Switch_Guard_Close#(L:switch_740_a) if{ 74001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Command_Switch_Guard_Open#(L:switch_740_a) ! if{ 74001 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Command_Switch_Guard_Toggle#74001 (>K:ROTOR_BRAKE)
+PMDG_B777_Evac_Signal_Command_Toggle#73901 (>K:ROTOR_BRAKE)
+PMDG_B777_Evac_Signal_Horn_Shutoff_Pull#(L:switch_741_a) if{ 74101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Horn_Shutoff_Push#(L:switch_741_a) ! if{ 74101 (>K:ROTOR_BRAKE) }
+PMDG_B777_Evac_Signal_Horn_Shutoff_Toggle#74101 (>K:ROTOR_BRAKE)
+PMDG_B777_Evac_Signal_Test_Press#74201 (>K:ROTOR_BRAKE)
+PMDG_B777_Fire_Ovht_Test_Off#(L:switch_89_a) if{ 8901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fire_Ovht_Test_On#(L:switch_89_a) ! if{ 8901 (>K:ROTOR_BRAKE) }
+PMDG_B777_Fire_Ovht_Test_Toggle#8901 (>K:ROTOR_BRAKE)
+PMDG_B777_No_Smoking_Auto_#50 (L:switch_29_a) - 50 div s0 :1 l0 0 > if{ 2907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_No_Smoking_Dec#2908 (>K:ROTOR_BRAKE)
+PMDG_B777_No_Smoking_Inc#2907 (>K:ROTOR_BRAKE)
+PMDG_B777_No_Smoking_Off_#0 (L:switch_29_a) - 50 div s0 :1 l0 0 > if{ 2907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_No_Smoking_On#100 (L:switch_29_a) - 50 div s0 :1 l0 0 > if{ 2907 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 2908 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Pass_Oxygen_Press#5201 (>K:ROTOR_BRAKE)
+PMDG_B777_Pass_Oxygen_Switch_Guard_Close#(L:switch_53_a) if{ 5301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Pass_Oxygen_Switch_Guard_Open#(L:switch_53_a) ! if{ 5301 (>K:ROTOR_BRAKE) }
+PMDG_B777_Pass_Oxygen_Switch_Guard_Toggle#5301 (>K:ROTOR_BRAKE)
+PMDG_B777_Seat_Belts_Auto_#50 (L:switch_30_a) - 50 div s0 :1 l0 0 > if{ 3007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Seat_Belts_Dec#3008 (>K:ROTOR_BRAKE)
+PMDG_B777_Seat_Belts_Inc#3007 (>K:ROTOR_BRAKE)
+PMDG_B777_Seat_Belts_Off#0 (L:switch_30_a) - 50 div s0 :1 l0 0 > if{ 3007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+PMDG_B777_Seat_Belts_On#100 (L:switch_30_a) - 50 div s0 :1 l0 0 > if{ 3007 (>K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 < if{ 3008 (>K:ROTOR_BRAKE) l0 ++ s0 g1 }
+//PMDG/B777 300ER/Warning
+PMDG_B777_LEFT_WARNING_CAUTION_Button_Press#17701 (>K:ROTOR_BRAKE)
+PMDG_B777_RIGHT_WARNING_CAUTION_Button_Press#27201 (>K:ROTOR_BRAKE)
