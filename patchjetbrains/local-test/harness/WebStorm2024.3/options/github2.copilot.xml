@@ -1,0 +1,11 @@
+<application>
+  <component name="github-copilot">
+    <option name="signinNotificationShown" value="true" />
+    <option name="terminalRulesVersion" value="1" />
+    <option name="toolConfirmAutoApprove" value="false" />
+    <option name="trustToolAnnotations" value="false" />
+    <terminalAutoApprove>
+      <map />
+    </terminalAutoApprove>
+  </component>
+</application>
